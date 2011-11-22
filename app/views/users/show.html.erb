@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Age:</b>
+  <%= @user.age %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @user.location %>
+</p>
+
+<p>
+  <b>Occupation:</b>
+  <%= @user.occupation %>
+</p>
+
+<p>
+  <b>Gender:</b>
+  <%= @user.gender %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @user.email %>
+</p>
+
+
+<%= link_to 'Edit Your Profile', edit_user_path(@user) %>
+
+<br/><br/>
+My Numbers:
+
+<% @numbers.each do |n| %>
+	<%= link_to n.number, number_path(n.id) %>
+<% end %>

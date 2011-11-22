@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Synesthesia</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+	
+	
+	
+	<%= fb_connect_async_js %>
+	<% if current_facebook_user %>
+	  <% fuser = current_facebook_user.fetch%>
+	  <%= "Welcome #{fuser.first_name} #{fuser.last_name}!" %>
+	  <%= link_to "Home", users_path %>
+	  <%= link_to "About", users_about_path %>
+	  <%= link_to "My Profile", user_path(session[:user_id]) %>
+	  <%= link_to "Community", numbers_path %>
+	  <%= link_to "Choose a number", numbers_picknumber_path %>
+	  <%= fb_logout_link("Logout of fb", request.url) %><br />
+	<% else %>
+	  <%= fb_login_and_redirect('http://localhost:3000/users/new', :perms => 'user_location,user_work_history,email,user_birthday,publish_stream') %>
+	<% end %>
+	
+<%= yield %>
+
+</body>
+</html>

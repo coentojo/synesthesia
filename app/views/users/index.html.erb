@@ -1,0 +1,39 @@
+<div id="header">Synesthesia is the overlapping of sense to create</div>
+
+<div id="message">Check out our community: <%= link_to "Community", numbers_path %></div>
+
+<br/><br/><br/><br/>
+WILL DELETE BELOW
+<h1>Listing users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Age</th>
+    <th>Location</th>
+    <th>Occupation</th>
+    <th>Gender</th>
+    <th>Email</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.age %></td>
+    <td><%= user.location %></td>
+    <td><%= user.occupation %></td>
+    <td><%= user.gender %></td>
+    <td><%= user.email %></td>
+    <td><%= link_to 'Show', user %></td>
+    <td><%= link_to 'Edit', edit_user_path(user) %></td>
+    <td><%= link_to 'Destroy', user, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New User', new_user_path %>

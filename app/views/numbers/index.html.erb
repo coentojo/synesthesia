@@ -1,0 +1,21 @@
+<% filter_types = ["age", ""]%>
+
+Community of Numbers
+<p id="notice"><%= notice %></p>
+
+<%= form_tag numbers_search_path, :method => :post do %>
+	Sort by: 
+	<%= select_tag  "filter_term", options_for_select(search_filter_types, "#{params[:filter_term]}"), :include_blank => true, :class => "org_filter_select" %>
+	<%= submit_tag "", :style => "display:none;" %>
+<% end %>
+
+
+<% @numbers.each do |n| %>
+ 	Number: <%= n.number %><br/>
+ 	Age: <%= n.age %><br/>
+	Gender: <%= n.gender %><br/>
+	Temperment<%= n.temperment %><br/>
+	Occupation <%= n.occupation %><br/>
+	Color: <%= n.color %><br/><br/><br/>
+<% end %>
+

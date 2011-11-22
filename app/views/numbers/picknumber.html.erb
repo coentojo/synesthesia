@@ -1,0 +1,15 @@
+Choose a number:<br/>
+
+<% zerototen = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+	
+<% zerototen.each do |number| %>
+ 	<% if !@usernumbers.empty? %>
+ 		<% if @usernumbers.include?(number) %>
+		  	<%= link_to number, edit_number_path(number), :class => 'oldnumber'%>
+		   <% else %>
+			<%= link_to number, new_number_path(number), :class => 'newnumber' %>
+		<% end %>
+	<% else %>
+		<%= link_to number, new_number_path(number) %>
+	<% end %>
+<% end %>

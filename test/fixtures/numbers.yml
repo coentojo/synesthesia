@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  age: 1
+  gender: MyString
+  temperment: MyString
+  occupation: MyString
+  color: MyString
+  number: 1
+
+two:
+  age: 1
+  gender: MyString
+  temperment: MyString
+  occupation: MyString
+  color: MyString
+  number: 1
