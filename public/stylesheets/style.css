@@ -28,3 +28,5 @@ ul#tabs { padding: 5px; margin: 0px; list-style-type: none; }
 
 
 /*users/new Page */
+#newuser_r2c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; background-color: #FF6600; font-size: 14pt; color: #FFFFFF; }
+#newuser_r3c56 { width: 324px; height: 170px; margin-bottom: 15px; margin-left: 15px; border: 1px dotted; float: left; font-size: 10pt; color: #FF6600; text-transform: uppercase; }

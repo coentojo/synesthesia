@@ -50,9 +50,17 @@ Profile yourself
 		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="r2c6" class="row2">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	<div id="newuser_r2c6" class="row2">
+		<ul id="tabs">
+			<% if current_facebook_user %>
+				<li><%= fb_logout_link("Logout of fb", request.url) %></li>
+			<% else %>
+				<li style="text-decoration: underline">Register/Login</li>	
+			<% end %>
+			<li style="text-decoration: line-through">Archive</li>
+			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li>
+		</ul>	
+		Like button
 	</div>
 	<div id="r3c1" class="row3">
 		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
@@ -70,14 +78,14 @@ Profile yourself
 		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="r3c5" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>
-	<div id="r3c6" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>		
+	<div id="newuser_r3c56" class="row3">
+		HELLO, <%= @name %>.<br/><br/>
+		IT IS VERY IMPORTANT TO US TO UNDERSTAND WHO YOU ARE AS
+		A UNIQUE CONTRIBUTOR TO GENERATING SPECIFIC CONTENT.<br/>
+		
+		<%= render 'form_simplified' %>
+		
+	</div>	
 	<div id="r4c1" class="row4">
 		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
