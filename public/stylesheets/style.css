@@ -1,0 +1,30 @@
+/*General CSS*/
+@font-face { font-family: Numerus; src: url('Numerus2.otf'); }
+body { margin: 0px; padding: 0px; font-family: Numerus}
+#content { padding: 22px 16px 22px 0px; border: 1px solid; width: 1024px; height: 768px; }
+.project { position: relative; left: 25px; top: 10px; text-decoration: underline;  }
+.numerus { position: relative; left: 25px; top: 20px; text-decoration: underline;  }
+.copyright { position: relative; left: -60px; top: 110px; }
+.trademark { position: relative; left: -45px; top: 110px; }
+
+
+/* Home Page*/
+.row1, .row2, .row3, .row4 { margin-bottom: 15px; font-size: 20pt; }
+#r1c1, #r1c2, #r1c3, #r1c3, #r1c4, #r1c5, #r1c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; }
+#r2c1, #r2c2, #r2c3, #r2c3, #r2c4, #r2c5, #r2c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; }
+#r3c1, #r3c2, #r3c3, #r3c3, #r3c4, #r3c5, #r3c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; }
+#r4c1, #r4c2, #r4c3, #r4c3, #r4c4, #r4c5, #r4c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; }
+
+#home_r2c2 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; font-size: 10pt; color: #0000FF; }
+#home_r2c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; background-color: #0000FF; font-size: 14pt; color: #FFFFFF; }
+ul#tabs { padding: 5px; margin: 0px; list-style-type: none; }
+#tabs a{color: #FFFFFF; text-decoration: none;}
+#tabs a.visited {color:#FFFFFF; text-decoration: none;}
+#home_r2c34 { width: 324px; height: 170px; margin-bottom: 15px; margin-left: 15px; border: 1px dotted; float: left; font-size: 10pt; color: #0000FF; text-transform: uppercase; }
+#home_r3c34 { width: 324px; height: 170px; margin-bottom: 15px; margin-left: 15px; border: 1px dotted; float: left; font-size: 10pt; color: #0000FF; text-transform: uppercase; }
+
+
+/*****************************/
+
+
+/*users/new Page */

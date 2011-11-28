@@ -104,6 +104,11 @@ class UsersController < ApplicationController
     
   end
   
+  #Home page where user logs in with FB
+  def home
+    
+  end
+  
 end
 
 

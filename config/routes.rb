@@ -8,6 +8,8 @@ Synesthesia::Application.routes.draw do
   resources :numbers
   
   resources :users
+  
+  root :to => "users#home"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
