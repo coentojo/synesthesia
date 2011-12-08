@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  num1: 1
+  verb: MyString
+  num2: 1
+
+two:
+  num1: 1
+  verb: MyString
+  num2: 1

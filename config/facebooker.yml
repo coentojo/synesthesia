@@ -3,5 +3,5 @@ development:
   secret: '24d20ad30724e75a6695368171fa809f'
 
 production: 
-  app_id: '302401596450772'
-  secret: '24d20ad30724e75a6695368171fa809f'
+  app_id: '333859243294743'
+  secret: 'e32e626336c6f9dff311d3ae89609b96'

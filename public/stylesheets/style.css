@@ -1,5 +1,6 @@
 /*General CSS*/
-@font-face { font-family: Numerus; src: url('Numerus2.otf'); }
+@font-face { font-family: Numerus; src: url('countless.otf'); }
+@font-face { font-family: NumerusTest; src: url('Numerustest.otf'); }
 body { margin: 0px; padding: 0px; font-family: Numerus}
 #content { padding: 22px 16px 22px 0px; border: 1px solid; width: 1024px; height: 768px; }
 .project { position: relative; left: 25px; top: 10px; text-decoration: underline;  }
@@ -27,6 +28,51 @@ ul#tabs { padding: 5px; margin: 0px; list-style-type: none; }
 /*****************************/
 
 
-/*users/new Page */
+/* users/new */
 #newuser_r2c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; background-color: #FF6600; font-size: 14pt; color: #FFFFFF; }
 #newuser_r3c56 { width: 324px; height: 170px; margin-bottom: 15px; margin-left: 15px; border: 1px dotted; float: left; font-size: 10pt; color: #FF6600; text-transform: uppercase; }
+
+
+/**********************************/
+
+
+/* Community Page */
+.community_instructions { color: #FF0000; font-size: 9pt; line-height: 0px;  }
+p.community_number { font-family: Numerus; color: #FF0000; font-size: 36pt; text-align: center; padding: 33px 0 0 0; }
+#community_r1c1, #community_r1c2, #community_r1c3, #community_r1c4, #community_r1c5, #community_r1c6, #community_r2c1, #community_r2c2, #community_r2c3, #community_r2c4, #community_r2c5 { width: 153px; height: 170px; border: 1px solid #FF0000; margin-left: 15px; float: left; }
+
+/* hover - change background */
+#community_r1c1:hover, #community_r1c2:hover, #community_r1c3:hover, #community_r1c4:hover, #community_r1c5:hover, #community_r1c6:hover, #community_r2c1:hover, #community_r2c2:hover, #community_r2c3:hover, #community_r2c4:hover, #community_r2c5:hover { background-color: #FF0000; }
+
+/* hover - change font color */
+#community_r1c1:hover p.community_number, #community_r1c2:hover p.community_number, #community_r1c3:hover p.community_number, #community_r1c4:hover p.community_number, #community_r1c5:hover p.community_number, #community_r1c6:hover p.community_number, #community_r2c1:hover p.community_number, #community_r2c2:hover p.community_number, #community_r2c3:hover p.community_number, #community_r2c4:hover p.community_number, #community_r2c5:hover p.community_number { color: #FFFFFF; }
+
+#community_r2c6 { width: 153px; height: 170px; margin-left: 15px; border: 1px dotted; float: left; background-color: #FF0000; font-size: 12pt; color: #FFFFFF; }
+
+
+
+/****************************************/
+/* Create/Edit Number */
+#number_age, #number_gender, #number_temperment, #number_color { width: 153px;  border: 1px dotted; margin-left: 15px; float: left; }
+p.new_number { font-family: Numerus; color: #FFFFFF; font-size: 36pt; text-align: center; padding: 33px 0 0 0; }
+p.number_attributes { font-family: Numerus; color: #000000; font-size: 36pt; text-align: center; padding: 33px 0 0 0; }
+
+/*************************/
+/* Archive */
+#archive_content { background-color: #000000; padding: 22px 16px 22px 0px; border: 1px solid; width: 1024px; height: 768px; }
+#archive_r1c1,#archive_r1c2,#archive_r1c3,#archive_r1c4,#archive_r1c5,#archive_r1c6,#archive_r2c1,#archive_r2c2,#archive_r2c3,#archive_r2c4,#archive_r2c5 {word-wrap: break-word; width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; color: #FFFFFF; }
+.archive_number_bg {position: relative; top: -140px; left: 0px; text-align: justify; line-height: 25px; letter-spacing: 5px; }
+.archive_number {font-family: Numerus; color: #FFFFFF; font-size: 36pt; text-align: center; padding: 33px 0 0 0;}
+#archive_r3c3 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; color:#FFFFFF; }
+
+
+
+
+
+
+
+
+
+
+
+

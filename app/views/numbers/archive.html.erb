@@ -1,0 +1,150 @@
+ARCHIVE
+
+<script>
+var allnumbers = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+var mapping_div = {0:'archive_r1c1', 1:'archive_r1c2', 2:'archive_r1c3', 3:'archive_r1c4', 4:'archive_r1c5', 5:'archive_r1c6', 6:'archive_r2c1', 7:'archive_r2c2', 8:'archive_r2c3', 9:'archive_r2c4', 10:'archive_r2c5'};
+var males = new Array();
+var females = new Array();
+$(document).ready(function(){
+	
+	calculateAttributes();
+});
+
+function calculateAttributes() {
+	$.get("/numbers/calculateArchive", function(data){
+		var str ="";
+		for(var i=0;i<allnumbers.length;i++) {
+			if(data[i][3] == "&#36;") {
+				males.push([data[i][0],data[i][1],data[i][2],data[i][3]]);
+			}
+			else {
+				females.push([data[i][0],data[i][1],data[i][2],data[i][3]]);
+			}
+			$('#'+mapping_div[i]).css('color', data[i][2]);
+			for(var j=0;j<15;j++) {
+				str += data[i][1]+data[i][0]+data[i][3];
+			}
+			$('#'+mapping_div[i]).append('<span class="archive_number_bg">'+str+'</span>');
+			str = "";
+		}
+	});
+
+}
+function openGender() {
+	var width = 400;
+	var height = 400; 
+	if($(window)) {
+		width = $(window).width()/2;
+		height = $(window).height();
+	}
+	var m_param = '?g='+escape('&#36;');
+	var f_param = '?g='+escape('&#33;');
+	window.open("/numbers/filtergender"+f_param, "mywindow", "location=1,status=1,scrollbars=1, width="+width+",height="+height+",screenX=0,screenY=0");
+	window.open("/numbers/filtergender"+m_param, "mywindow2", "location=1,resizable=0,status=1,scrollbars=1, width="+width+",height="+height+",screenX="+width+",screenY=0");
+}
+
+function gender() {
+	$.get("/numbers/filtergender", function(data){
+		//alert(data[0][0]["number"]["age"]);
+		for(var i=0;i<data[0].length;i++) {
+			//alert(data[0]["number"]);
+		}
+	});
+	
+}
+</script>
+
+
+<div id="archive_content">
+	<div id="archive_r1c1" class="row1">
+		<p class="archive_number">ZERO</p>
+	</div>
+	<div id="archive_r1c2" class="row1">
+		<p class="archive_number">ONE</p>
+	</div>
+	<div id="archive_r1c3" class="row1">
+		<p class="archive_number">TWO</p>
+	</div>				
+	<div id="archive_r1c4" class="row1">
+		<p class="archive_number">THREE</p>
+	</div>
+	<div id="archive_r1c5" class="row1">
+		<p class="archive_number">FOUR</p>
+	</div>
+	<div id="archive_r1c6" class="row1">
+		<p class="archive_number">FIVE</p>
+	</div>
+	<div id="archive_r2c1" class="row2">
+		<p class="archive_number">SIX</p>
+	</div>
+	<div id="archive_r2c2" class="row2">
+		<p class="archive_number">SEVEN</p>
+	</div>
+	<div id="archive_r2c3" class="row2">
+		<p class="archive_number">EIGHT</p>
+	</div>
+	<div id="archive_r2c4" class="row2">
+		<p class="archive_number">NINE</p>
+	</div>
+	<div id="archive_r2c5" class="row2">
+		<p class="archive_number">TEN</p>
+	</div>
+	<div id="r2c6" class="row2">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>
+	<div id="r3c1" class="row3">
+		DIRECTIONS:
+		LOOK AT THE COMMUNITY DIFFERENTLY BY USING
+		THE FILTERS ON THE RIGHT.
+	</div>
+	<div id="r3c2" class="row3">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>
+	<div id="archive_r3c3" class="row3">
+
+	Gender <%= radio_button_tag "numbers", "gender", false, :onclick => "openGender();"%>
+	Age <%= radio_button_tag "numbers", "gender", false %>
+		
+
+	</div>
+	<div id="r3c4" class="row3">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>
+	<div id="r3c5" class="row3">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>
+	<div id="r3c6" class="row3">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>		
+	<div id="r4c1" class="row4">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>		
+	<div id="r4c2" class="row4">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>		
+	<div id="r4c3" class="row4">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>		
+	<div id="r4c4" class="row4">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>		
+	<div id="r4c5" class="row4">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>	
+	<div id="r4c6" class="row4">
+		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
+		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	</div>	
+</div>
+
+

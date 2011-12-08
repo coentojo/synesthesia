@@ -4,6 +4,10 @@ Synesthesia::Application.routes.draw do
   get "numbers/picknumber"
   get "users/about"
   get "numbers/search"
+  get "users/community"
+  get "numbers/archive"
+  get "numbers/calculateArchive"
+  get "numbers/filtergender"
   
   resources :numbers
   

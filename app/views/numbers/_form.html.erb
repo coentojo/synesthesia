@@ -1,6 +1,77 @@
-<% occupation_types = ["Administrative/Secretarial", "Art/Design/Creative/Performance", "Executive/Management", "Financial/Accounting/Real Estate", "Labor/Construction", "Legal", "Medical/Dental/Veterinary/Fitness", "Political/Govt/Civil Service", "Retail/Food Services", "Sales/Marketing", "Self-Employed/Entrepreneur", "Education/Teacher/Professor", "Technical/Science/Computers/Engineering", "Travel/Hospitality/Transportation", "Nonprofit/Volunteer/Activist", "Law enforcement/Security/Military", "Fashion/Model/Beauty", "Architecture/Interior Design"] %>
+<script>
+var allnumbers = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);	
+var opposite_allnumbers = {};
+var mapping_div = {0:'r1c1', 1:'r1c2', 2:'r1c3', 3:'r1c4', 4:'r1c5', 5:'r1c6', 6:'r2c1', 7:'r2c2', 8:'r2c3', 9:'r2c4', 10:'r2c5'};
+var mapping_numbers = {0:'ZERO', 1:'ONE', 2:'TWO', 3:'THREE', 4:'FOUR', 5:'FIVE', 6:'SIX', 7:'SEVEN', 8:'EIGHT', 9:'NINE', 10:'TEN'}
 
-<% gender_types = ["male"], ["female"] %>
+Array.prototype.removeItem=function(str) {
+   for(i=0; i<this.length ; i++){
+     if(escape(this[i]).match(escape(str.trim()))){
+       this.splice(i, 1);  break;
+     }
+   }
+  return this;
+}
+
+$(document).ready(function(){
+	allnumbers.removeItem("<%= @number.number %>");
+	loadAttribute();
+});
+
+function loadAttribute() {
+	var arr = new Array("number_gender", "number_age", "number_temperment", "number_color", "number_equation");
+	for(var i=0; i<arr.length;i++) {
+		if(arr[i] == "number_equation"){ 
+			showAttribute(arr[i], $("#"+arr[i]).val());
+		}
+		else {
+			showAttribute(arr[i], $("#"+arr[i]+' option:selected').val());
+		}
+	}
+}
+
+function showAttribute(id, type) {
+	var new_div_num;
+	if(!(id in opposite_allnumbers)) {
+		// alert(opposite_allnumbers[id]);
+		// alert(JSON.stringify(opposite_allnumbers));
+		// alert('id:'+id);
+		while($.inArray(new_div_num, allnumbers) == -1) {
+			new_div_num = Math.floor(Math.random()*10);
+		}
+		opposite_allnumbers[id] = new_div_num;
+		allnumbers.removeItem(new_div_num.toString());
+	}
+	else {
+		// alert('id2:'+id);
+		new_div_num = opposite_allnumbers[id];
+	}
+	if(id == "number_color") {
+		$('#'+mapping_div[new_div_num]).css({'background-color': type});
+	}
+	else if(id == "number_equation") {
+		var str = "<%= @number.number %>";
+		str += $("#verb").val();
+		str += $("#num_relation").val();
+		$("#"+mapping_div[new_div_num]).empty();
+		$("#"+mapping_div[new_div_num]).append('<p class="number_attributes">'+str+'</p>');
+	}
+	else {
+		$("#"+mapping_div[new_div_num]).empty();
+		$("#"+mapping_div[new_div_num]).append('<p class="number_attributes">'+type+'</p>');
+	}
+}
+
+</script>
+
+<% gender_types = [["male", "&#36;"], ["female", "&#33;"]] %>
+<% temperment_types = [["lazy", "&#38;"], ["pessimistic", "&#42;"], ["naive", "&#60;"], ["aggressive", "&#62;"], ["mysterious", "&#123;"], ["independent", "&#125;"], ["perfectionist", "&#126;"], ["patriotic", "&#124;"], ["considerate", "&#94;"], ["optimistic", "&#41;"], ["too cool", "&#91;"]] %>
+<% ages = Range.new(0, 99) %>
+<% colors = [["red", "#FF0000"], ["orange", "#FF6600"], ["yellow", "#FFFF00"], ["green", "#33FF33"], ["blue", "#0000FF"], ["purple", "#9900FF"], ["pink", "#FF06F5"]] %>
+<% verb_types = ["likes", "hates", "annoys", "kicks", "hits", "ignores", "dates"] %>
+<% num_types = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+<% num_types.delete_at(@number.number) %>
+
 
 <%= form_for(@number) do |f| %>
   <% if @number.errors.any? %>
@@ -15,29 +86,33 @@
     </div>
   <% end %>
 	
-  <%= @number.number %>
   <%= f.hidden_field(:number, :value => @number.number)%>
-  <div class="field">
-    <%= f.label :age %><br />
-    <%= f.text_field :age %>
-  </div>
-  <div class="field">
-    <%= f.label :temperment %><br />
-    <%= f.text_field :temperment %>
-  </div>
-  <div class="field">
-    <%= f.label :occupation %><br />
-	<%= f.select  :occupation, options_for_select(occupation_types) %>
-  </div>
-  <div class="field">
+
+<div id="number_row">
+  <div id="number_gender">
     <%= f.label :gender %><br />
-	<%= f.select :gender, options_for_select(gender_types) %>
+	<%= f.select :gender, options_for_select(gender_types, :selected => @number.gender), {}, :onchange => "showAttribute(this.id, this.value);" %>
   </div>
-  <div class="field">
+  <div id="number_age">
+    <%= f.label :age %><br />
+    <%= f.select :age, options_for_select(ages, :selected => @number.age), {}, :onchange => "showAttribute(this.id, this.value);" %>
+  </div>
+  <div id="number_temperment">
+    <%= f.label :temperment %><br />
+	<%= f.select :temperment, options_for_select(temperment_types, :selected => @number.temperment), {}, :onchange => "showAttribute(this.id, this.value);" %>
+  </div>
+  <div id="number_color">
     <%= f.label :color %><br />
-    <%= f.text_field :color %>
+	<%= f.select :color, options_for_select(colors, :selected => @number.color), {}, :onchange => "showAttribute(this.id, this.value);" %>
+  </div>
+  <div id="number_equation">
+	<%= @number.number %>
+	<%= select_tag "verb", options_for_select(verb_types, :selected => @numberlike.verb), :onchange => "showAttribute('number_equation', this.value);" %>
+	<%= select_tag "num_relation", options_for_select(num_types, :selected => @numberlike.num2), :onchange => "showAttribute('number_equation', this.value);" %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Next number" %>
   </div>
+</div>
+
 <% end %>

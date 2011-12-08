@@ -37,9 +37,10 @@ class UsersController < ApplicationController
        #check if the logged in user has logged in before
        check = User.find_by_email(@email)
        if check
-         redirect_to user_path(check.id)
+         session[:user_id] = check.id
+         redirect_to users_community_path
        else 
-         @user = User.new(:name => @name, :email => @email, :age => @age, :gender => @gender, :location => @location)
+         @user = User.new(:name => @name, :email => @email, :age => @age, :gender => @gender)
          respond_to do |format|
            format.html # new.html.erb
          end
@@ -66,7 +67,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         session[:user_id] = @user.id
-        format.html { redirect_to(numbers_picknumber_path) }
+        format.html { redirect_to(users_community_path) }
       else
         format.html { render :action => "new" }
       end
@@ -80,7 +81,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(numbers_community_path, :notice => 'User was successfully updated.') }
       else
         format.html { render :action => "edit" }
       end
@@ -107,6 +108,16 @@ class UsersController < ApplicationController
   #Home page where user logs in with FB
   def home
     
+  end
+  
+  def community
+    @usernumbers = Array.new
+    usernumbers = Number.where(:user_id => session[:user_id])
+    usernumbers.each do |u| 
+      if u.number
+        @usernumbers << u.number
+      end
+    end
   end
   
 end

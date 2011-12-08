@@ -10,7 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111122063801) do
+ActiveRecord::Schema.define(:version => 20111205183711) do
+
+  create_table "numberlikes", :force => true do |t|
+    t.integer  "num1"
+    t.string   "verb"
+    t.integer  "num2"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
 
   create_table "numbers", :force => true do |t|
     t.integer  "age"
@@ -27,12 +36,13 @@ ActiveRecord::Schema.define(:version => 20111122063801) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.integer  "age"
-    t.string   "location"
     t.string   "occupation"
     t.string   "gender"
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country"
+    t.string   "state"
   end
 
 end
