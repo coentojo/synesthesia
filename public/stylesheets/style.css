@@ -40,18 +40,16 @@ ul#tabs { padding: 5px; margin: 0px; list-style-type: none; }
 /* Community Page */
 .community_instructions { color: #FF0000; font-size: 9pt; line-height: 0px;  }
 p.community_number { font-family: Numerus; color: #FF0000; font-size: 36pt; text-align: center; padding: 33px 0 0 0; }
-#community_r1c1, #community_r1c2, #community_r1c3, #community_r1c4, #community_r1c5, #community_r1c6, #community_r2c1, #community_r2c2, #community_r2c3, #community_r2c4, #community_r2c5 { width: 151px; height: 170px; border: 1px solid #FF0000; margin-left: 15px; float: left; }
+#community_r1c1, #community_r1c2, #community_r1c3, #community_r1c4, #community_r1c5, #community_r1c6, #community_r2c1, #community_r2c2, #community_r2c3, #community_r2c4, #community_r2c5 { width: 155px; height: 170px; border: 1px solid #FF0000; margin-left: 15px; float: left; }
 
 /* hover - change background */
 #community_r1c1:hover, #community_r1c2:hover, #community_r1c3:hover, #community_r1c4:hover, #community_r1c5:hover, #community_r1c6:hover, #community_r2c1:hover, #community_r2c2:hover, #community_r2c3:hover, #community_r2c4:hover, #community_r2c5:hover { background-color: #FF0000; }
 
 /* hover - change font color */
 #community_r1c1:hover p.community_number, #community_r1c2:hover p.community_number, #community_r1c3:hover p.community_number, #community_r1c4:hover p.community_number, #community_r1c5:hover p.community_number, #community_r1c6:hover p.community_number, #community_r2c1:hover p.community_number, #community_r2c2:hover p.community_number, #community_r2c3:hover p.community_number, #community_r2c4:hover p.community_number, #community_r2c5:hover p.community_number { color: #FFFFFF; }
-
+#community_r1c1_edit,  #community_r1c2_edit, #community_r1c3_edit, #community_r1c4_edit, #community_r1c5_edit, #community_r1c6_edit, #community_r2c1_edit, #community_r2c2_edit, #community_r2c3_edit, #community_r2c4_edit, #community_r2c5_edit {width: 153px; height: 170px; border: 1px solid #FF0000; margin-left: 15px; float: left; background-color: #FF0000;}
 
 #community_r2c6 { width: 153px; height: 170px; margin-left: 15px; float: left; border: 1px solid; background-color: #FF0000; font-size: 12pt; color: #FFFFFF; }
-
-.community_r1c1_edit {width: 151px; height: 170px; border: 1px solid #FF0000; margin-left: 15px; float: left; background-color: #FF0000;}
 p.community_number_edit {font-family: Numerus; color: #FF0000; font-size: 36pt; text-align: center; padding: 33px 0 0 0;color: #FFFFFF;}
 
 

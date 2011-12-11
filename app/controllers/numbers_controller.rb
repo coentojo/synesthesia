@@ -46,8 +46,12 @@ class NumbersController < ApplicationController
     @numberlikes.save
     
     @number = Number.new(params[:number])
-    @number.user_id = session[:user_id] if !session[:user_id].empty?
+    if session[:user_id]
+      @number.user_id = session[:user_id]
+    end
     respond_to do |format|
+      puts "USERID"
+      puts @number.user_id
       if @number.save
         format.html { redirect_to(:controller => "users", :action => "community", :notice => 'Number was successfully created.') }
       else
@@ -260,7 +264,7 @@ class NumbersController < ApplicationController
   end
   
   def logout
-    session[:user_id] = ""
+    reset_session
     redirect_to(root_path)
   end
 
