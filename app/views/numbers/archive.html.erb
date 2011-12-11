@@ -13,15 +13,19 @@ $(document).ready(function(){
 	calculateAttributes();
 	loadMyAttributes();
 	$('#helper').css('display','block');
+	$('#helper').css('width',$(window).width());
+	$('#helper').css('height',$(window).height());
 });
 
 
 function toggleHelper(val) {
 	if(val == 'yes') {
-		$('#helper').css('display','none')
+		$('#helper').css('display','none');
 	}
 	else {
-		$('#helper').css('display','block')
+		$('#helper').css('display','block');
+		$('#helper').css('width',$(window).width());
+		$('#helper').css('height',$(window).height());
 	}
 }
 
@@ -103,7 +107,9 @@ function calculateAttributes() {
 		}
 	});
 
-}
+}	
+	var width_info = $(window).width()/2 - 200;
+	var height_info = $(window).height()/2 - 100;
 function openGender() {
 	var width = 400;
 	var height = 400; 
@@ -111,9 +117,9 @@ function openGender() {
 		width = $(window).width()/2;
 		height = $(window).height();
 	}
-	window.open("/numbers/filtergender_male.html", "mywindow", "location=1,status=1,scrollbars=1, width=512,height=768,screenX=0,screenY=0");
-	window.open("/numbers/filtergender_female.html", "mywindow2", "location=1,resizable=0,status=1,scrollbars=1, width=512,height=768,screenX="+width+",screenY=0");
-	window.open("/numbers/genderinfo.html","mywindow3","location=1,status=1,scrollbars=1,width=450,height=260,screenX="+width+",screenY="+$(window).height()/2);
+	window.open("/numbers/filtergender_male.html", "mywindow", "location=1,status=1,scrollbars=1, width="+width+",height=768,screenX=0,screenY=0");
+	window.open("/numbers/filtergender_female.html", "mywindow2", "location=1,resizable=0,status=1,scrollbars=1, width="+width+",height=768,screenX="+width+",screenY=0");
+	window.open("/numbers/genderinfo.html","mywindow3","location=1,status=1,scrollbars=1,width=450,height=260,screenX="+width_info+",screenY="+height_info);
 }
 
 function openAge(){
@@ -127,7 +133,7 @@ function openAge(){
 			pos_x += 50;
 			pos_y += 50;
 		}
-		window.open("ageinfo.html","windowA","location=1,status=1,scrollbars=1, width=450, height=260, screenX="+$(window).width()/2+", screenY="+$(window).height()/2)
+		window.open("ageinfo.html","windowA","location=1,status=1,scrollbars=1, width=450, height=260, screenX="+width_info+", screenY="+height_info);
 	});
 }
 
@@ -143,7 +149,7 @@ function openColor() {
 			pos_x += 180;
 			i++;
 		}
-		window.open("colorinfo.html","windowA","location=1,status=1,scrollbars=1, width=450, height=260, screenX="+$(window).width()/2+", screenY="+$(window).height()/2)
+		window.open("colorinfo.html","windowA","location=1,status=1,scrollbars=1, width=450, height=260, screenX="+width_info+", screenY="+height_info);
 	});
 }
 
@@ -224,7 +230,7 @@ function openColor() {
 	</div>
 	<div id="helper_r1c456"></div>
 	<div id="helper_r2c12345"></div>
-	<div id="helper_r2c6"><span style="color: #FFFF00">CLOSE INFO <a href="#" onclick="toggleHelper('yes');">X</a></span></div>
+	<div id="helper_r2c6"><span style="color: #FFFF00">CLOSE INFO <a href="#" style="color:#FFFFFF" onclick="toggleHelper('yes');">X</a></span></div>
 	<div id="helper_r3c123">
 		<u><span style="color: #0000FF">FILTERS:</span></u><br/>
 		<span class="helper_text">LOOK AT THE COMMUNITY DIFFERENTLY BY USING THE FILTERS:

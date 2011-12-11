@@ -55,7 +55,7 @@
 		ACCESS COUNTLESS.<br/><br/><br/><br/><br/>
 	<%= fb_connect_async_js %>
 	<% if current_facebook_user %>
-	  <%= fb_logout_link("Logout of fb", request.url) %><br />
+	  <%= fb_logout_link("Logout", 'logout') %><br />
 	<% else %>
 	  <%= fb_login_and_redirect(new_user_path, :perms => 'user_location,user_work_history,email,user_birthday,publish_stream') %>
 	<% end %>

@@ -166,6 +166,7 @@ class NumbersController < ApplicationController
       temp << countColumn(n,"temperment")
       temp << countColumn(n,"color")
       temp << countColumn(n,"gender")
+      temp << n
       @data << temp
       temp = Array.new
     end
@@ -178,7 +179,7 @@ class NumbersController < ApplicationController
     @str = params["str"].split(',')
     temp = @str[0]
     @str[0] = addPadding(Integer(temp))
-    @n = params["n"]
+    @n = @str[4]
   end
   
   def filtercolor
