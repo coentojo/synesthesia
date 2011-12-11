@@ -26,10 +26,6 @@ class NumbersController < ApplicationController
     n = params[:id]
     @number = Number.where(:user_id => session[:user_id]).find_by_number(n)
     @numberlike = Numberlike.where(:user_id => session[:user_id]).find_by_num1(n)
-    puts "Numbelie"
-    puts @numberlike.to_yaml
-    puts session[:user_id]
-    puts n
     respond_to do |format|
       format.html 
     end
@@ -203,7 +199,6 @@ class NumbersController < ApplicationController
     colors.each do |c|
       @data[c] ||= []
     end
-    puts @data
     render :json => @data
   end
   
