@@ -29,9 +29,9 @@ ul#tabs { padding: 5px; margin: 0px; list-style-type: none; }
 
 
 /* users/new */
-#newuser_r2c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; background-color: #FF6600; font-size: 14pt; color: #FFFFFF; }
-#newuser_r3c56 { width: 324px; height: 170px; margin-bottom: 15px; margin-left: 15px; border: 1px dotted; float: left; font-size: 10pt; color: #FF6600; text-transform: uppercase; }
-#new_r1c6 {background: url('/images/LOGO.jpg'); width: 153px; height: 170px; margin-left: 15px; float: left; border: 1px solid;}
+#newuser_r2c6 { width: 155px; height: 170px; margin-left: 15px; float: left; background-color: #FF6600; font-size: 14pt; color: #FFFFFF; }
+#newuser_r3c56 { width: 324px; height: 170px; margin-bottom: 15px; margin-left: 15px; float: left; font-size: 10pt; color: #FF6600; text-transform: uppercase; }
+#new_r1c6 {background: url('/images/LOGO.jpg'); width: 153px; height: 170px; margin-left: 15px; float: left; }
 
 
 /**********************************/
@@ -49,7 +49,7 @@ p.community_number { font-family: Numerus; color: #FF0000; font-size: 36pt; text
 #community_r1c1:hover p.community_number, #community_r1c2:hover p.community_number, #community_r1c3:hover p.community_number, #community_r1c4:hover p.community_number, #community_r1c5:hover p.community_number, #community_r1c6:hover p.community_number, #community_r2c1:hover p.community_number, #community_r2c2:hover p.community_number, #community_r2c3:hover p.community_number, #community_r2c4:hover p.community_number, #community_r2c5:hover p.community_number { color: #FFFFFF; }
 
 
-#community_r2c6 { width: 153px; height: 170px; margin-left: 15px; float: left; background-color: #FF0000; font-size: 12pt; color: #FFFFFF; }
+#community_r2c6 { width: 153px; height: 170px; margin-left: 15px; float: left; border: 1px solid; background-color: #FF0000; font-size: 12pt; color: #FFFFFF; }
 
 .community_r1c1_edit {width: 151px; height: 170px; border: 1px solid #FF0000; margin-left: 15px; float: left; background-color: #FF0000;}
 p.community_number_edit {font-family: Numerus; color: #FF0000; font-size: 36pt; text-align: center; padding: 33px 0 0 0;color: #FFFFFF;}

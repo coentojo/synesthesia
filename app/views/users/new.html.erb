@@ -33,10 +33,11 @@
 	</div>
 	<div id="newuser_r2c6" class="row2">
 		<ul id="tabs">
+			<%= fb_connect_async_js %>
 			<% if current_facebook_user %>
-				<li><%= fb_logout_link("Logout of fb", request.url) %></li>
+			  <%= fb_logout_link("Logout", 'logout') %><br />
 			<% else %>
-				<li style="text-decoration: underline">Register/Login</li>	
+			  <%= fb_login_and_redirect(request.url, :perms => 'user_location,user_work_history,email,user_birthday,publish_stream')%>
 			<% end %>
 			<li style="text-decoration: line-through">Archive</li>
 			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li>

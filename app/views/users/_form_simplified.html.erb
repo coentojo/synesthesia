@@ -1,6 +1,7 @@
 <script>
 function checkUS() {
-	alert($("label[for='country']"));
+	alert('hi');
+	$('#user_state').css('visibility','hidden');
 }
 
 </script>
@@ -20,15 +21,15 @@ function checkUS() {
       </ul>
     </div>
   <% end %>
-
+	<br/>
   <div class="field">
-  	<%= f.label :country, "Country" %> <%= f.country_select(:country, "US", :onchange => 'checkUS();') %>
+  	<span style="color:#000000"><u><%= f.label :country, "Country" %></u></span> <%= f.country_select(:country, "US") %>
+  </div>
+  <div id="user_state">
+  	<span style="color:#000000"><u><%= f.label :state, "State" %></u></span> <%= f.state_select(:state) %>
   </div>
   <div class="field">
-  	<%= f.label :state, "State" %> <%= f.state_select(:state) %>
-  </div>
-  <div class="field">
-    <%= f.label :occupation %>
+    <span style="color:#000000"><u><%= f.label :occupation %></u></span>
 	<%= f.select  :occupation, options_for_select(occupation_types) %>
   </div>
 	<%= f.hidden_field :email %>
