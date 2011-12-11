@@ -54,7 +54,7 @@ p.community_number { font-family: Numerus; color: #FF0000; font-size: 36pt; text
 
 #community_r2c6 { width: 153px; height: 170px; margin-left: 15px; float: left; border: 1px solid; background-color: #FF0000; font-size: 12pt; color: #FFFFFF; }
 p.community_number_edit {font-family: Numerus; color: #FF0000; font-size: 36pt; text-align: center; padding: 33px 0 0 0;color: #FFFFFF;}
-#community_r3c6 {width: 153px; height: 170px; margin-left: 25px; float: left; border: 1px solid #000000; font-size: 9pt; color: #000000; }
+#community_r3c6 {width: 153px; height: 170px; margin-left: 25px; float: left; border: 1px solid #FFFFFF; font-size: 9pt; color: #000000; }
 
 /****************************************/
 /* Create/Edit Number */

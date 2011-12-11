@@ -107,7 +107,9 @@ class UsersController < ApplicationController
   
   #Home page where user logs in with FB
   def home
-    
+    if(current_facebook_user)
+      redirect_to users_community_path
+    end
   end
   
   def community

@@ -20,6 +20,7 @@ Synesthesia::Application.routes.draw do
   get "numbers/ageinfo"
   get "numbers/colorinfo"
   get "numbers/logout"
+  get "users/logout"
   
   
   resources :numbers
