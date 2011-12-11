@@ -16,13 +16,31 @@ Array.prototype.removeItem=function(str) {
 $(document).ready(function(){
 	allnumbers.removeItem("<%= @number.number %>");
 	loadAttribute();
+	if(checkAll()) {
+		$('#submit_num').css('display', 'inline');
+		$('#please_fill_out').css('display', 'none');
+	}
+	else {
+		$('#submit_num').css('display', 'none');
+		$('#please_fill_out').css('display', 'inline');
+	}
 });
 
+function checkAll(){
+	if($('#number_gender option:selected').val() && $('#number_temperment option:selected').val() && $('#number_age option:selected').val() && $('#number_color option:selected').val() && $('#verb option:selected').val()) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
 function loadAttribute() {
 	var arr = new Array("number_gender", "number_age", "number_temperment", "number_color", "number_equation");
 	for(var i=0; i<arr.length;i++) {
 		if(arr[i] == "number_equation"){ 
-			showAttribute(arr[i], $("#"+arr[i]).val());
+			if($('#verb option:selected').val()){
+				showAttribute(arr[i], $("#"+arr[i]).val());
+			}
 		}
 		else {
 			showAttribute(arr[i], $("#"+arr[i]+' option:selected').val());
@@ -50,11 +68,13 @@ function showAttribute(id, type) {
 		$('#'+mapping_div[new_div_num]).css({'background-color': type});
 	}
 	else if(id == "number_equation") {
-		var str = "<%= @number.number %>";
+		var str = mapping_numbers["<%= @number.number %>"];
+		str += "<br/>";
 		str += $("#verb").val();
-		str += $("#num_relation").val();
+		str += "<br/>";
+		str += mapping_numbers[$("#num_relation").val()];
 		$("#"+mapping_div[new_div_num]).empty();
-		$("#"+mapping_div[new_div_num]).append('<p class="number_attributes">'+str+'</p>');
+		$("#"+mapping_div[new_div_num]).append('<p class="number_attributes_eqn">'+str+'</p>');
 	}
 	else {
 		$("#"+mapping_div[new_div_num]).empty();
@@ -62,14 +82,26 @@ function showAttribute(id, type) {
 	}
 }
 
+function toggleSubmit(){
+	if(checkAll()) { 
+		$('#submit_num').css('display', 'inline');
+		$('#please_fill_out').css('display', 'none');
+	}
+	else{
+		$('#submit_num').css('display', 'none');
+		$('#please_fill_out').css('display', 'inline');
+	}
+}
+
 </script>
 
-<% gender_types = [["male", "&#36;"], ["female", "&#33;"]] %>
-<% temperment_types = [["lazy", "&#38;"], ["pessimistic", "&#42;"], ["naive", "&#60;"], ["aggressive", "&#62;"], ["mysterious", "&#123;"], ["independent", "&#125;"], ["perfectionist", "&#126;"], ["patriotic", "&#124;"], ["considerate", "&#94;"], ["optimistic", "&#41;"], ["too cool", "&#91;"]] %>
+<% gender_types = [["",""], ["male", "&#36;"], ["female", "&#33;"]] %>
+<% temperment_types = [["",""], ["lazy", "&#38;"], ["pessimistic", "&#42;"], ["naive", "&#60;"], ["aggressive", "&#62;"], ["mysterious", "&#123;"], ["independent", "&#125;"], ["perfectionist", "&#126;"], ["patriotic", "&#124;"], ["considerate", "&#94;"], ["optimistic", "&#41;"], ["too cool", "&#91;"]] %>
 <% ages = Range.new(0, 99) %>
-<% colors = [["red", "#FF0000"], ["orange", "#FF6600"], ["yellow", "#FFFF00"], ["green", "#33FF33"], ["blue", "#0000FF"], ["purple", "#9900FF"], ["pink", "#FF06F5"]] %>
-<% verb_types = ["likes", "hates", "annoys", "kicks", "hits", "ignores", "dates"] %>
+<% colors = [["",""], ["red", "#FF0000"], ["orange", "#FF6600"], ["yellow", "#FFFF00"], ["green", "#33FF33"], ["blue", "#0000FF"], ["purple", "#9900FF"], ["pink", "#FF06F5"]] %>
+<% verb_types = ["", "LIKES", "HATES", "ANNOYS", "KICKS", "HITS", "IGNORES", "DATES"] %>
 <% num_types = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+<% num_types_words = ["ZERO", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN", "EIGHT", "NINE", "TEN"]%>
 <% num_types.delete_at(@number.number) %>
 
 
@@ -89,29 +121,29 @@ function showAttribute(id, type) {
   <%= f.hidden_field(:number, :value => @number.number)%>
 
 <div id="number_row">
-  <div id="number_gender">
-    <%= f.label :gender %><br />
-	<%= f.select :gender, options_for_select(gender_types, :selected => @number.gender), {}, :onchange => "showAttribute(this.id, this.value);" %>
+  <div id="number_gender_div">
+    <%= f.label :gender, :class => "attribute_headings" %><br />
+	<%= f.select :gender, options_for_select(gender_types, :selected => @number.gender), {}, :onchange => "showAttribute(this.id, this.value);", :onblur => "toggleSubmit();" %>
   </div>
-  <div id="number_age">
-    <%= f.label :age %><br />
-    <%= f.select :age, options_for_select(ages, :selected => @number.age), {}, :onchange => "showAttribute(this.id, this.value);" %>
+  <div id="number_age_div">
+    <%= f.label :age, :class => "attribute_headings" %><br />
+    <%= f.select :age, options_for_select(ages, :selected => @number.age), {:include_blank => true}, :onchange => "showAttribute(this.id, this.value);", :onblur => "toggleSubmit();"%>
   </div>
-  <div id="number_temperment">
-    <%= f.label :temperment %><br />
-	<%= f.select :temperment, options_for_select(temperment_types, :selected => @number.temperment), {}, :onchange => "showAttribute(this.id, this.value);" %>
+  <div id="number_temperment_div">
+    <%= f.label :temperment, :class => "attribute_headings" %><br />
+	<%= f.select :temperment, options_for_select(temperment_types, :selected => @number.temperment), {}, :onchange => "showAttribute(this.id, this.value);", :onblur => "toggleSubmit();" %>
   </div>
-  <div id="number_color">
-    <%= f.label :color %><br />
-	<%= f.select :color, options_for_select(colors, :selected => @number.color), {}, :onchange => "showAttribute(this.id, this.value);" %>
+  <div id="number_color_div">
+    <%= f.label :color, :class => "attribute_headings"%><br />
+	<%= f.select :color, options_for_select(colors, :selected => @number.color), {}, :onchange => "showAttribute(this.id, this.value);", :onblur => "toggleSubmit();" %>
   </div>
-  <div id="number_equation">
-	<%= @number.number %>
-	<%= select_tag "verb", options_for_select(verb_types, :selected => @numberlike.verb), :onchange => "showAttribute('number_equation', this.value);" %>
-	<%= select_tag "num_relation", options_for_select(num_types, :selected => @numberlike.num2), :onchange => "showAttribute('number_equation', this.value);" %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Next number" %>
+  <div id="number_equation_div">
+	<span class="attribute_headings">Equation</span>
+	<span id="please_fill_out">Enter values for each attribute.</span><br/>
+	<%= num_types_words[@number.number] %>
+	<%= select_tag "verb", options_for_select(verb_types, :selected => @numberlike.verb), :onchange => "showAttribute('number_equation', this.value);", :onblur => "toggleSubmit();" %>
+	<%= select_tag "num_relation", options_for_select(num_types, :selected => @numberlike.num2, :include_blank => true),:onchange => "showAttribute('number_equation', this.value);", :onblur => "toggleSubmit();" %>
+    <span id="submit_num"><%= f.submit "Next number" %></span>
   </div>
 </div>
 

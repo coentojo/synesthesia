@@ -1,28 +1,28 @@
 /*General CSS*/
-@font-face { font-family: Numerus; src: url('countless.otf'); }
+@font-face { font-family: Numerus; src: url('Christopher2.otf'); }
 @font-face { font-family: NumerusTest; src: url('Numerustest.otf'); }
 body { margin: 0px; padding: 0px; font-family: Numerus}
-#content { padding: 22px 16px 22px 0px; border: 1px solid; width: 1024px; height: 768px; }
-.project { position: relative; left: 25px; top: 10px; text-decoration: underline;  }
-.numerus { position: relative; left: 25px; top: 20px; text-decoration: underline;  }
-.copyright { position: relative; left: -60px; top: 110px; }
-.trademark { position: relative; left: -45px; top: 110px; }
+#content { padding: 22px 16px 22px 0px; width: 1030px; height: 768px; }
+.copyright { position: relative; left: 40px; top: 75px; }
+.trademark { position: relative; left: 80px; top: 75px; }
 
 
 /* Home Page*/
 .row1, .row2, .row3, .row4 { margin-bottom: 15px; font-size: 20pt; }
-#r1c1, #r1c2, #r1c3, #r1c3, #r1c4, #r1c5, #r1c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; }
-#r2c1, #r2c2, #r2c3, #r2c3, #r2c4, #r2c5, #r2c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; }
-#r3c1, #r3c2, #r3c3, #r3c3, #r3c4, #r3c5, #r3c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; }
-#r4c1, #r4c2, #r4c3, #r4c3, #r4c4, #r4c5, #r4c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; }
+#r1c1, #r1c2, #r1c3, #r1c3, #r1c4, #r1c5, #r1c6 { width: 153px; height: 170px; margin-left: 15px; float: left; }
+#r2c1, #r2c2, #r2c3, #r2c3, #r2c4, #r2c5, #r2c6 { width: 153px; height: 170px; margin-left: 15px; float: left; }
+#r3c1, #r3c2, #r3c3, #r3c3, #r3c4, #r3c5, #r3c6 { width: 153px; height: 170px; margin-left: 15px; float: left; }
+#r4c1, #r4c2, #r4c3, #r4c3, #r4c4, #r4c5, #r4c6 { width: 153px; height: 170px; margin-left: 15px; float: left; }
 
-#home_r2c2 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; font-size: 10pt; color: #0000FF; }
-#home_r2c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; background-color: #0000FF; font-size: 14pt; color: #FFFFFF; }
+#home_r2c2 { width: 153px; height: 170px; margin-left: 15px; float: left; font-size: 10pt; color: #0000FF; }
+#home_r2c6 { width: 153px; height: 170px; margin-left: 15px; float: left; background-color: #0000FF; font-size: 14pt; color: #FFFFFF; }
 ul#tabs { padding: 5px; margin: 0px; list-style-type: none; }
 #tabs a{color: #FFFFFF; text-decoration: none;}
 #tabs a.visited {color:#FFFFFF; text-decoration: none;}
-#home_r2c34 { width: 324px; height: 170px; margin-bottom: 15px; margin-left: 15px; border: 1px dotted; float: left; font-size: 10pt; color: #0000FF; text-transform: uppercase; }
-#home_r3c34 { width: 324px; height: 170px; margin-bottom: 15px; margin-left: 15px; border: 1px dotted; float: left; font-size: 10pt; color: #0000FF; text-transform: uppercase; }
+#home_r2c234 { width: 493px; height: 130px; margin-bottom: 15px; margin-left: 15px; float: left; font-size: 22pt; color: #0000FF; text-transform: uppercase; line-height: 130%; text-align: center; padding-top: 30px; }
+#home_r3c234 { width: 493px; height: 170px; margin-left: 15px; float: left; font-size: 22pt; color: #0000FF; text-transform: uppercase; line-height: 130%; text-align: center; }
+#home_r3c6 {width: 153px; height: 170px; margin-left: 15px; float: left; font-size: 11pt; color: #0000FF; line-height: 1.27em}
+#home_r1c6 {background: url('/images/LOGO.jpg'); width: 153px; height: 170px; margin-left: 15px; float: left; }
 
 
 /*****************************/
@@ -31,6 +31,7 @@ ul#tabs { padding: 5px; margin: 0px; list-style-type: none; }
 /* users/new */
 #newuser_r2c6 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; background-color: #FF6600; font-size: 14pt; color: #FFFFFF; }
 #newuser_r3c56 { width: 324px; height: 170px; margin-bottom: 15px; margin-left: 15px; border: 1px dotted; float: left; font-size: 10pt; color: #FF6600; text-transform: uppercase; }
+#new_r1c6 {background: url('/images/LOGO.jpg'); width: 153px; height: 170px; margin-left: 15px; float: left; border: 1px solid;}
 
 
 /**********************************/
@@ -39,7 +40,7 @@ ul#tabs { padding: 5px; margin: 0px; list-style-type: none; }
 /* Community Page */
 .community_instructions { color: #FF0000; font-size: 9pt; line-height: 0px;  }
 p.community_number { font-family: Numerus; color: #FF0000; font-size: 36pt; text-align: center; padding: 33px 0 0 0; }
-#community_r1c1, #community_r1c2, #community_r1c3, #community_r1c4, #community_r1c5, #community_r1c6, #community_r2c1, #community_r2c2, #community_r2c3, #community_r2c4, #community_r2c5 { width: 153px; height: 170px; border: 1px solid #FF0000; margin-left: 15px; float: left; }
+#community_r1c1, #community_r1c2, #community_r1c3, #community_r1c4, #community_r1c5, #community_r1c6, #community_r2c1, #community_r2c2, #community_r2c3, #community_r2c4, #community_r2c5 { width: 151px; height: 170px; border: 1px solid #FF0000; margin-left: 15px; float: left; }
 
 /* hover - change background */
 #community_r1c1:hover, #community_r1c2:hover, #community_r1c3:hover, #community_r1c4:hover, #community_r1c5:hover, #community_r1c6:hover, #community_r2c1:hover, #community_r2c2:hover, #community_r2c3:hover, #community_r2c4:hover, #community_r2c5:hover { background-color: #FF0000; }
@@ -47,32 +48,96 @@ p.community_number { font-family: Numerus; color: #FF0000; font-size: 36pt; text
 /* hover - change font color */
 #community_r1c1:hover p.community_number, #community_r1c2:hover p.community_number, #community_r1c3:hover p.community_number, #community_r1c4:hover p.community_number, #community_r1c5:hover p.community_number, #community_r1c6:hover p.community_number, #community_r2c1:hover p.community_number, #community_r2c2:hover p.community_number, #community_r2c3:hover p.community_number, #community_r2c4:hover p.community_number, #community_r2c5:hover p.community_number { color: #FFFFFF; }
 
-#community_r2c6 { width: 153px; height: 170px; margin-left: 15px; border: 1px dotted; float: left; background-color: #FF0000; font-size: 12pt; color: #FFFFFF; }
 
+#community_r2c6 { width: 153px; height: 170px; margin-left: 15px; float: left; background-color: #FF0000; font-size: 12pt; color: #FFFFFF; }
+
+.community_r1c1_edit {width: 151px; height: 170px; border: 1px solid #FF0000; margin-left: 15px; float: left; background-color: #FF0000;}
+p.community_number_edit {font-family: Numerus; color: #FF0000; font-size: 36pt; text-align: center; padding: 33px 0 0 0;color: #FFFFFF;}
 
 
 /****************************************/
 /* Create/Edit Number */
-#number_age, #number_gender, #number_temperment, #number_color { width: 153px;  border: 1px dotted; margin-left: 15px; float: left; }
+#number_age_div, #number_gender_div, #number_temperment_div, #number_color_div { width: 153px;  margin-left: 15px; float: left; }
+#number_equation_div { width: 321px; margin-left: 15px; float:left; }
 p.new_number { font-family: Numerus; color: #FFFFFF; font-size: 36pt; text-align: center; padding: 33px 0 0 0; }
-p.number_attributes { font-family: Numerus; color: #000000; font-size: 36pt; text-align: center; padding: 33px 0 0 0; }
+p.number_attributes { font-family: Numerus; color: #000000; font-size: 140pt; text-align: center; position: relative; top: -100px; left: -20px}
+p.number_attributes_eqn { font-family: Numerus; color: #000000; font-size: 24pt; text-align: center; padding: 0 0 0 0; line-height: 120% }
+#new_r3c1, #new_r3c2, #new_r3c3, #new_r3c4, #new_r3c5 {width: 153px; height: 170px; margin-left: 15px; float: left; font-size: 9pt; color: #000000; }
+.attribute_headings {text-decoration: underline; color: #000000;}
+#please_fill_out {font-size: 8pt; color: #FF0000;}
+#new_r3c6 {width: 153px; height: 170px; margin-left: 15px; float: left; font-size: 9pt; color: #000000;}
+
 
 /*************************/
 /* Archive */
 #archive_content { background-color: #000000; padding: 22px 16px 22px 0px; border: 1px solid; width: 1024px; height: 768px; }
-#archive_r1c1,#archive_r1c2,#archive_r1c3,#archive_r1c4,#archive_r1c5,#archive_r1c6,#archive_r2c1,#archive_r2c2,#archive_r2c3,#archive_r2c4,#archive_r2c5 {word-wrap: break-word; width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; color: #FFFFFF; }
-.archive_number_bg {position: relative; top: -140px; left: 0px; text-align: justify; line-height: 25px; letter-spacing: 5px; }
-.archive_number {font-family: Numerus; color: #FFFFFF; font-size: 36pt; text-align: center; padding: 33px 0 0 0;}
-#archive_r3c3 { width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; color:#FFFFFF; }
+#archive_r1c1,#archive_r1c2,#archive_r1c3,#archive_r1c4,#archive_r1c5,#archive_r1c6,#archive_r2c1,#archive_r2c2,#archive_r2c3,#archive_r2c4,#archive_r2c5 {text-align: center; word-wrap: break-word; width: 153px; height: 170px; margin-left: 15px; float: left; color: #FFFFFF; }
+.archive_number_bg {position: relative; top: 0px; left: 0px; font-size: 18pt; line-height: 1.2em;  }
+p.archive_number {font-family: Numerus; color: #FFFFFF; font-size: 36pt; text-align: center; padding: 33px 0 0 0; position:relative; top:-175px; }
+.show_archive_number { font-family: Numerus; color: #FFFFFF; font-size: 36pt; text-align: center; padding: 33px 0 0 0;  }
+#archive_r3c3 { width: 155px; height: 170px; margin-left: 15px; float: left; color:#FFFFFF; font-size: 10pt; }
+#archive_r3c12 {width: 325px; height: 170px; margin-left: 15px; float: left; color:#FFFFFF; font-size: 10pt;}
+#archive_r3c4 { width: 155px; height: 170px; margin-left: 15px; float: left; color:#FFFFFF; font-size: 10pt}
+#archive_r4c1, #archive_r4c2, #archive_r4c3, #archive_r4c4, #archive_r4c5, #archive_r4c6, #archive_r5c1, #archive_r5c2, #archive_r5c3, #archive_r5c4, #archive_r5c5, #archive_r5c6 {width: 153px; height: 75px; margin-left: 15px; float: left; color: #FFFFFF; font-size: 11pt; line-height: 1.27em }
+#archive_r2c6 { width: 153px; height: 170px; margin-left: 15px; border: 1px solid; float: left; font-size: 12pt; color: #FFFFFF;}
+
+/*Helper*/
+#helper {width: 1024px; height: 768px; padding-top: 20px ; background-color: #000000; position:absolute; top:0; left: 0; font-size: 15pt; opacity:0.8;}
+#helper_r1c123 {width: 495px; height: 170px; margin-left: 15px; float: left}
+#helper_r1c456 {width: 495px; height: 170px; margin-left: 15px; float: left}
+#helper_r2c12345 {width: 820px; height: 170px; margin-left: 15px; float: left}
+#helper_r2c6 {width: 155px; height: 170px; margin-left: 15px; float: left;}
+#helper_r3c123 {width: 495px; height: 170px; margin-left: 15px; float: left; }
+#helper_r3c456 {width: 495px; height: 170px; margin-left: 15px; float: left; }
+#helper_r4c123 {width: 495px; height: 170px; margin-left: 15px; float: left; }
+.helper_text {font-size: 15pt; line-height: 1.2em; color: #FFFFFF;}
 
 
+/*******************/
+/*Gender Filter */
+#gender_content {background-color: #000000; padding: 22px 16px 22px 0px; border: 1px solid; width: 512px; height: 768px;  }
+.gender_main {font-family: Numerus; color: #FFFFFF; font-size: 12pt; text-align: center; padding: 33px 0 0 0; position: absolute; left: 40px; top: 10px;}
+#gender_r1c2, #gender_r1c3, #gender_r2c1, #gender_r2c2, #gender_r2c3, #gender_r3c1, #gender_r3c2,#gender_r3c3, #gender_r4c1, #gender_r4c2,#gender_r4c3 { text-align: center;	word-wrap: break-word; width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; color:#FFFFFF;
+}
+.gender_number_bg{ line-height: 25px; letter-spacing: 5px; font-size: 12pt; }
+#gender_info {width: 450px; height: 260px; font-size: 15pt; line-height: 1.2em; color: #FFFFFF; background-color: #0000FF; text-align: center;}
+p.gender_number {font-family: Numerus; font-size: 23pt; color: #FFFFFF; position: relative; top: -110px;}
 
 
+/*********************/
+/*Age Filter*/
+#age_content{background-color: #000000; width: 470px; height: 270px; }
+#age_r1c1 {text-align: center; word-wrap: break-word; width: 153px; height: 170px; border: 1px dotted #FFFFFF; margin-left: 15px; float: left; color:#FFFFFF; position: relative; top: 20px;}
+#age_r1c2 {word-wrap: break-word; width: 165px; height: 170px; border: 1px dotted #FFFFFF; margin-left: 15px; float: left; color:#FFFFFF; position: relative; top: 20px;}
+.age_main {font-family: Numerus; color: #FFFFFF; font-size: 12pt; text-align: center; padding: 33px 0 0 0; position: absolute; left: 70px; top: 10px; }
+#age_number {color: #FFFFFF; font-size: 30pt; position: relative; top: -85px; left: 35px;}
+#age_info {width: 450px; height: 260px; font-size: 15pt; line-height: 1.2em; color: #FFFFFF; background-color: #33FF33; text-align: center; }
+
+/********************/
+/*Color Filter*/
+#color_content{background-color: #000000; width: 180px; min-height:768px}
+#color_r1c1 {word-wrap: break-word; width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; margin-top: 10px; float: left; color:#FFFFFF; text-align: center;}
+#color_r2c1 {word-wrap: break-word; width: 153px; height: 170px; border: 1px dotted; margin-left: 15px; float: left; color:#FFFFFF; font-size: 15pt; line-height: 1.2em }
+#color_number {font-size: 23pt; color: #FFFFFF;position: relative; top: -90px; left: 40px; }
+#color_info{width: 450px; height: 260px; font-size: 15pt; line-height: 1.2em; color: #FFFFFF; background-color: #000000; text-align: center; }
 
 
+/******************/
+/*Show Number DATA*/
+#show_content {background-color: #000000; width: 1024px; height: 768px; padding-top: 20px}
+#show_r1c1, #show_r1c5, #show_r1c6 { width: 153px;height: 170px; margin-left: 15px; float: left; border: 1px dotted #000000;}
+#show_r1c4 {width: 153px; height: 170px; margin-left: 15px; float: left; font-size: 12pt; }
+#show_r1c23 {width: 321px; height: 170px; margin-left: 15px; float: left;}
+.show_attr {color: #FFFFFF; font-size: 23pt;}
+.show_attr_type {color: #FFFFFF; font-size: 12pt; line-height: 1.2em}
+.attr_story {color: #FFFFFF; text-transform:uppercase; font-size: 16pt; line-height: 1.22em}
+#show_r234c123 { width: 495px; height: 540px; margin-left: 15px; float: left; color: #FFFFFF; font-size: 23pt; line-height: 1.22em; word-wrap:break-word;}
+#show_r234c45 {width: 321px; height: 540px; margin-left: 15px; float: left; color: #FFFFFF; font-size: 15pt; line-height: 1.2em; overflow:auto}
 
-
-
+/*******************/
+/*About */
+#about_r2c45 { width: 325px; height: 170px; margin-left: 15px; float: left; word-wrap:break-word; font-size: 11pt; line-height: 1.27em}
+#about_r2c3 {font-size: 11pt; width: 155px; height: 170px; margin-left: 15px; float:left;}
 
 
 

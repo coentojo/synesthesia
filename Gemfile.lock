@@ -37,6 +37,7 @@ GEM
       mogli (>= 0.0.33)
       ruby-hmac
     hashie (1.1.0)
+    htmlentities (4.3.1)
     httmultiparty (0.3.6)
       httparty (>= 0.7.3)
       multipart-post
@@ -100,6 +101,7 @@ PLATFORMS
 DEPENDENCIES
   carmen
   facebooker2
+  htmlentities
   jquery-rails (>= 1.0.12)
   pg
   rails (= 3.0.9)

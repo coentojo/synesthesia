@@ -8,6 +8,19 @@ Synesthesia::Application.routes.draw do
   get "numbers/archive"
   get "numbers/calculateArchive"
   get "numbers/filtergender"
+  get "numbers/filtergender_male"
+  get "numbers/filtergender_female"
+  get "numbers/filterage"
+  get "numbers/windowage"
+  get "numbers/filtercolor"
+  get "numbers/windowcolor"
+  get "numbers/calcmyattributes"
+  get "numbers/shownum"
+  get "numbers/genderinfo"
+  get "numbers/ageinfo"
+  get "numbers/colorinfo"
+  get "numbers/logout"
+  
   
   resources :numbers
   

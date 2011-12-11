@@ -1,69 +1,62 @@
 <div id="content">
-	<div id="community_r1c1" class="row1" onclick="location.href='<%= @usernumbers.include?(0) ? edit_number_path(0) : new_number_path(0) %>';" style="cursor:pointer;">
-		<p class="community_number">ZERO</p>
+	<div <%= @usernumbers.include?(0) ? "class='community_r1c1_edit'" : "id='community_r1c1'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(0) ? edit_number_path(0) : new_number_path(0) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(0) ? "class='community_number_edit'" : "class='community_number'"%>>ZERO</p>
 	</div>
-	<div id="community_r1c2" class="row1" onclick="location.href='<%= @usernumbers.include?(1) ? edit_number_path(1) : new_number_path(1) %>';" style="cursor:pointer;">
-		<p class="community_number">ONE</p>
+	<div <%= @usernumbers.include?(1) ? "class='community_r1c1_edit'" : "id='community_r1c2'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(1) ? edit_number_path(1) : new_number_path(1) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(1) ? "class='community_number_edit'" : "class='community_number'"%>>ONE</p>
 	</div>
-	<div id="community_r1c3" class="row1" onclick="location.href='<%= @usernumbers.include?(2) ? edit_number_path(2) : new_number_path(2) %>';" style="cursor:pointer;">
-		<p class="community_number">TWO</p>
-	</div>				
-	<div id="community_r1c4" class="row1" onclick="location.href='<%= @usernumbers.include?(3) ? edit_number_path(3) : new_number_path(3) %>';" style="cursor:pointer;">
-		<p class="community_number">THREE</p>
+	<div <%= @usernumbers.include?(2) ? "class='community_r1c1_edit'" : "id='community_r1c3'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(2) ? edit_number_path(2) : new_number_path(2) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(2) ? "class='community_number_edit'" : "class='community_number'"%>>TWO</p>
 	</div>
-	<div id="community_r1c5" class="row1" onclick="location.href='<%= @usernumbers.include?(4) ? edit_number_path(4) : new_number_path(4) %>';" style="cursor:pointer;">
-		<p class="community_number">FOUR</p>
+	<div <%= @usernumbers.include?(3) ? "class='community_r1c1_edit'" : "id='community_r1c4'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(3) ? edit_number_path(3) : new_number_path(3) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(3) ? "class='community_number_edit'" : "class='community_number'"%>>THREE</p>
 	</div>
-	<div id="community_r1c6" class="row1" onclick="location.href='<%= @usernumbers.include?(5) ? edit_number_path(5) : new_number_path(5) %>';" style="cursor:pointer;">
-		<p class="community_number">FIVE</p>
+	<div <%= @usernumbers.include?(4) ? "class='community_r1c1_edit'" : "id='community_r1c5'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(4) ? edit_number_path(4) : new_number_path(4) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(1) ? "class='community_number_edit'" : "class='community_number'"%>>FOUR</p>
 	</div>
-	<div id="community_r2c1" class="row2" onclick="location.href='<%= @usernumbers.include?(6) ? edit_number_path(6) : new_number_path(6) %>';" style="cursor:pointer;">
-		<p class="community_number">SIX</p>
+	<div <%= @usernumbers.include?(5) ? "class='community_r1c1_edit'" : "id='community_r1c6'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(5) ? edit_number_path(5) : new_number_path(5) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(5) ? "class='community_number_edit'" : "class='community_number'"%>>FIVE</p>
 	</div>
-	<div id="community_r2c2" class="row2" onclick="location.href='<%= @usernumbers.include?(7) ? edit_number_path(7) : new_number_path(7) %>';" style="cursor:pointer;">
-		<p class="community_number">SEVEN</p>
+	<div <%= @usernumbers.include?(6) ? "class='community_r1c1_edit'" : "id='community_r2c1'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(6) ? edit_number_path(6) : new_number_path(6) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(6) ? "class='community_number_edit'" : "class='community_number'"%>>SIX</p>
 	</div>
-	<div id="community_r2c3" class="row2" onclick="location.href='<%= @usernumbers.include?(8) ? edit_number_path(8) : new_number_path(8) %>';" style="cursor:pointer;">
-		<p class="community_number">EIGHT</p>
+	<div <%= @usernumbers.include?(7) ? "class='community_r1c1_edit'" : "id='community_r2c2'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(7) ? edit_number_path(7) : new_number_path(7) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(7) ? "class='community_number_edit'" : "class='community_number'"%>>SEVEN</p>
 	</div>
-	<div id="community_r2c4" class="row2" onclick="location.href='<%= @usernumbers.include?(9) ? edit_number_path(9) : new_number_path(9) %>';" style="cursor:pointer;">
-		<p class="community_number">NINE</p>
+	<div <%= @usernumbers.include?(8) ? "class='community_r1c1_edit'" : "id='community_r2c3'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(8) ? edit_number_path(8) : new_number_path(8) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(8) ? "class='community_number_edit'" : "class='community_number'"%>>EIGHT</p>
 	</div>
-	<div id="community_r2c5" class="row2" onclick="location.href='<%= @usernumbers.include?(10) ? edit_number_path(10) : new_number_path(10) %>';" style="cursor:pointer;">
-		<p class="community_number">TEN</p>
+	<div <%= @usernumbers.include?(9) ? "class='community_r1c1_edit'" : "id='community_r2c4'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(9) ? edit_number_path(9) : new_number_path(9) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(9) ? "class='community_number_edit'" : "class='community_number'"%>>NINE</p>
 	</div>
+	<div <%= @usernumbers.include?(10) ? "class='community_r1c1_edit'" : "id='community_r2c5'" %> class="row1" onclick="location.href='<%= @usernumbers.include?(10) ? edit_number_path(10) : new_number_path(10) %>';" style="cursor:pointer;">
+		<p <%= @usernumbers.include?(10) ? "class='community_number_edit'" : "class='community_number'"%>>TEN</p>
+	</div>
+	
+	
 	<div id="community_r2c6" class="row2">
 		<ul id="tabs">
+			<%= fb_connect_async_js %>
 			<% if current_facebook_user %>
-				<li><%= fb_logout_link("Logout of fb", request.url) %></li>
+			  <%= fb_logout_link("Logout", 'logout') %><br />
 			<% else %>
-				<li style="text-decoration: underline">Register/Login</li>	
+			  <%= fb_login_and_redirect(request.url, :perms => 'user_location,user_work_history,email,user_birthday,publish_stream')%>
 			<% end %>
 			<li style="text-decoration: line-through; color: #000000">Archive</li>
-			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li><br/>
+			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li><br/><br/>
 			<li style="text-decoration: underline"><%= "#{current_facebook_user.fetch.first_name} #{current_facebook_user.fetch.last_name}" if current_facebook_user %></li>
-		</ul>	
+		</ul><br/><br/>
 		Like button
 	</div>
 	<div id="r3c1" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="r3c2" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="r3c3" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="r3c4" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="r3c5" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="r3c6" class="row3">
 		<span class="community_instructions">
@@ -78,28 +71,16 @@
 		</span>
 	</div>		
 	<div id="r4c1" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>		
 	<div id="r4c2" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>		
 	<div id="r4c3" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>		
 	<div id="r4c4" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>		
 	<div id="r4c5" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>	
 	<div id="r4c6" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>	
 </div>
 

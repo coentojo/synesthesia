@@ -1,0 +1,11 @@
+<% num_words = ["ZERO","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN"] %>
+<div id="age_content">
+	<div id="age_r1c1" class="row1">
+		AGE: <br/><br><br/><%= @str[0]%>
+	</div>
+	<div id="age_r1c2" class="row1">
+		<% att = @str[1].html_safe+@str[0]+@str[3].html_safe %>
+		<span style="line-height: 1.2em; color: <%=@str[2]%>"><%= att*10 %></span>
+		<span id="age_number"><%= num_words[Integer(@n)] %></span>
+	</div>
+</div>

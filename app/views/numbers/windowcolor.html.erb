@@ -1,0 +1,18 @@
+<% colors = {"#FF0000"=>"RED", "#FF6600"=>"ORANGE", "#FFFF00"=>"YELLOW", "#33FF33"=>"GREEN", "#0000FF"=>"BLUE", "#9900FF"=>"PURPLE", "#FF06F5"=>"PINK"} %>
+<% num_words = ["ZERO","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN"] %>
+
+<% i = 0 %>
+<div id="color_content">
+	<div id="color_r1c1" class="row1" style="background-color: <%= @bg %>">
+		<span style="font-size: 18pt"><u>COLOR</u></span><br/><br/><br/>
+		<span style="font-size: 20pt"><%= colors[@bg]%></span>
+	</div>
+	<% i = 0%>
+	<% @arr.each do |a| %>
+		<div id="color_r2c1" style="color: <%= @bg %>"> 
+			<%= a.html_safe*17%>
+			<span id="color_number"><%= num_words[Integer(@numbers[i])] %></span>
+			<% i += 1 %>
+		</div>
+	<% end %>
+</div>

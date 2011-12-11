@@ -1,0 +1,38 @@
+<% num_words = ["ZERO","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN"] %>
+<% num_range = Range.new(0,9) %>
+<% num_padding = ["00", "01", "02","03","04","05","06","07","08",'09']%>
+<% temp_words = {"&#38;"=>"LAZY", "&#42;"=>"PESSIMISTIC", "&#60;"=>"NAIVE", "&#62;"=>"AGGRESSIVE", "&#123;"=>"MYSTERIOUS", "&#125;"=>"INDEPENDENT", "&#126;"=>"PERFECTIONIST", "&#124;"=>"PATRIOTIC", "&#94;"=>"CONSIDERATE", "&#41;"=>"OPTIMISTIC", "&#91;"=>"TOO COOL"} %>
+<% gender_words = {"&#36;"=>"MALE","&#33;"=>"FEMALE"}%>
+<% num_personas = {"&#38;"=>"year old male who thinks fast food is slow and wishes that there were something faster.", "&#42;"=>"year old male who suffers from a chronic migraine, a medical phenomenon due to his hopeless outlook on life.", "&#60;"=>"year old male with little or no perspective on matters, is generally care-free.", "&#62;"=>"year old male, whose friends call him a 'steamroller.'", "&#123;"=>"year old male who...no one really knows.", "&#125;"=>"year old male who doesn’t like to admit he’s incapable of accomplishing anything.", "&#126;"=>"year old male whose every day mission is to achieve the only one and simple goal: perfection.", "&#124;"=>"year old male who has a flair for anything with stars and stripes.", "&#94;"=>"year old male who's adored by the rest of the numbers for always being generous with his time and ability to help others.", "&#41;"=>"year old male is an optimist who always “stops and smells the roses.”", "&#91;"=>"year old male who thinks he is a man too soon and too sophisticated for his time."} %>
+
+<div id="show_content">
+	<div id="show_r1c1" class="row1" style="border: 1px solid <%=@attributes[3]%>">
+		<p class="show_archive_number"><%= num_words[@n] %></p>
+	</div>
+	<div id="show_r1c23" class="row1">
+		<span class="attr_story">
+			<%= num_words[@n]%> is a <%= @attributes[1].html_safe %> <%= num_personas[@attributes[0]]%>
+		</span>
+	</div>
+	<div id="show_r1c4" class="row1">
+		<span class="show_attr_type"><u>ATTRIBUTES:</u></span><br/><br/>
+		<span class="show_attr"><%= @attributes[2].html_safe %></span> <span class="show_attr_type" style="color: <%=@attributes[3]%>"><%= gender_words[@attributes[2]] %></span><br/><br/>
+		<span class="show_attr"><%= num_range.include?(Integer(@attributes[1])) ? num_padding[Integer(@attributes[1])] : @attributes[1] %></span> <span class="show_attr_type" style="color: <%=@attributes[3]%>">YRS</span><br/><br/>
+		<span class="show_attr"><%= @attributes[0].html_safe %></span> <span class="show_attr_type" style="color: <%=@attributes[3]%>"><%= temp_words[@attributes[0]] %></span> <br/><br/>
+	</div>
+	<div id="show_r1c5" class="row1"></div>
+	<div id="show_r1c6" class="row1"></div>
+	
+	<div id="show_r234c123">
+		<span class="show_attr_type"><u>PATTERN STREAM:</u></span><br/>
+		<span style="color: <%=@attributes[3]%>"><% str = @attributes[0].html_safe+@attributes[1].html_safe+@attributes[2].html_safe%>
+		<%= str*90%></span>
+	</div>
+	<div id="show_r234c45">
+		<span class="show_attr_type"><u>EQUATION WORDSTREAM</u></span><br/>
+		<% @equations.each do |e| %>	
+			<%= num_words[e.num1] %> <%= e.verb %> <%= num_words[e.num2] %><br/>
+		<% end %>
+		
+	</div>
+</div>

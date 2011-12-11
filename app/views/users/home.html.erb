@@ -1,108 +1,81 @@
 <div id="content">
 	<div id="r1c1" class="row1">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="r1c2" class="row1">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="r1c3" class="row1">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>				
 	<div id="r1c4" class="row1">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="r1c5" class="row1">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="r1c6" class="row1">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	<div id="home_r1c6" class="row1">
 	</div>
 	<div id="r2c1" class="row2">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="home_r2c2" class="row2">
-		<span>WELCOME</span><br/><br/><br/><br/><br/>
-		<span style="">STATEMENT OF INTENT</span>
-	</div>
-	<div id="home_r2c34" class="row2">
-		PLEASE LOGIN TO YOUR FACEBOOK ACCOUNT TO
-		ACCESS PROJECT NUMERUS.<br/>
-		THIS PROJECT SEEKS OUT TO FURTHER UNDERSTANDING OF HOW
-		WE UNDERSTAND SYMBOLS AND HOW WE FURTHER DEVELOP MEAN-
-		ING TO THOSE SYMBOLS IN TURN TO CREATE MEANING. USING
-		SYNESTHESIA AS A PLATFORM. WE QUESTION HOW WE USE NUM-
-		BERS BEYOND PURE QUANTIFIES OF OTHER THINGS. NUMEROUS
-		SEEKS OUT TO ATTRIBUTE NEW MEANING TO NUMBERS BY CHAL-
-		LENGING HOW WE UNDERSTAND AND PERCEIVE NUMBERS.
-		
+	<div id="home_r2c234" class="row2">
+		COUNTLESS IS A PROJECT WHICH
+		 CHALLENGES HOW WE PERCEIVE
+		 AND INTERACT WITH NUMBERS.
 	</div>
 	<div id="r2c5" class="row2">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="home_r2c6" class="row2">
 		<ul id="tabs">
 			<li style="text-decoration: underline">Register/Login</li>
-			<li style="text-decoration: line-through">Archive</li>
+			<li style="text-decoration: line-through; color: #000000">Archive</li>
 			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li>
 		</ul>	
 		Like button
 	</div>
 	<div id="r3c1" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="r3c2" class="row3">
-	</div>
 	
-	<div id="home_r3c34" class="row2">
-		<br/><br/>WE WILL NOT POST ANY ACTVITY TO FB WITHOUT
-		YOUR PERMISSION.<br/><br/><br/>
-		<%= fb_connect_async_js %>
-		<% if current_facebook_user %>
-		  <%= fb_logout_link("Logout of fb", request.url) %><br />
-		<% else %>
-		  <%= fb_login_and_redirect('http://localhost:3000/users/new', :perms => 'user_location,user_work_history,email,user_birthday,publish_stream') %>
-		<% end %>
+	<div id="home_r3c234" class="row2">
+	   IT AIMS TO EMULATE THE
+	 SYNESTHETIC EXPERIENCE BY
+	CREATING A DIGITAL COMMUNITY
+	    OF “LIVING” NUMBERS.
 	</div>
 
 	<div id="r3c5" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="r3c6" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	<div id="home_r3c6" class="row3">
+		PLEASE LOGIN TO YOUR
+		FACEBOOK ACCOUNT TO
+		ACCESS COUNTLESS.<br/><br/><br/><br/><br/>
+	<%= fb_connect_async_js %>
+	<% if current_facebook_user %>
+	  <%= fb_logout_link("Logout of fb", request.url) %><br />
+	<% else %>
+	  <%= fb_login_and_redirect('http://localhost:3000/users/new', :perms => 'user_location,user_work_history,email,user_birthday,publish_stream') %>
+	<% end %>
 	</div>		
 	<div id="r4c1" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>		
 	<div id="r4c2" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>		
 	<div id="r4c3" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>		
 	<div id="r4c4" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>		
 	<div id="r4c5" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>	
 	<div id="r4c6" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>	
 </div>

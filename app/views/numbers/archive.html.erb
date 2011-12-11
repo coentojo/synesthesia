@@ -1,18 +1,80 @@
-ARCHIVE
-
 <script>
 var allnumbers = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
 var mapping_div = {0:'archive_r1c1', 1:'archive_r1c2', 2:'archive_r1c3', 3:'archive_r1c4', 4:'archive_r1c5', 5:'archive_r1c6', 6:'archive_r2c1', 7:'archive_r2c2', 8:'archive_r2c3', 9:'archive_r2c4', 10:'archive_r2c5'};
+var my_mapping_div = {0:'archive_r4c1', 1:'archive_r4c2', 2:'archive_r4c3', 3:'archive_r4c4', 4:'archive_r4c5', 5:'archive_r4c6', 6:'archive_r5c1', 7:'archive_r5c2', 8:'archive_r5c3', 9:'archive_r5c4', 10:'archive_r5c5'};
+var js_gender = {'&#33;':'FEMALE', '&#36;':'MALE'};
+var js_temperment = {'&#38;':'LAZY', '&#42;':'PESSIMISTIC', '&#60;':'NAIVE', '&#62;':'AGGRESSIVE', '&#123;':'MYSTERIOUS', '&#125;':'INDEPENDENT', '&#126;':'PERFECTIONIST', '&#124':'PATRIOTIC', '&#94;':'CONSIDERATE','&#41;':'OPTIMISTIC','&#91;':'TOO COOL'};
+var js_numwords = {0:'ZERO',1:'ONE',2:'TWO',3:'THREE',4:'FOUR',5:'FIVE',6:'SIX',7:'SEVEN',8:'EIGHT',9:'NINE',10:'TEN'};
+
+
 var males = new Array();
 var females = new Array();
 $(document).ready(function(){
-	
 	calculateAttributes();
+	loadMyAttributes();
+	$('#helper').css('display','block');
 });
+
+
+function toggleHelper(val) {
+	if(val == 'yes') {
+		$('#helper').css('display','none')
+	}
+	else {
+		$('#helper').css('display','block')
+	}
+}
+
+function padNumber(n) {
+	if(n == 0 || n == 1 || n == 2 || n == 3 || n == 4 || n == 5 || n==6 || n==7 || n==8 || n ==9) {
+		var str = "0"+n;
+		return str;
+	}
+	else{
+		return n;
+	}
+}
+
+//Load My Contributions section:
+function loadMyAttributes(){
+	$.get("/numbers/calcmyattributes", function(data) {
+		var str = "";
+		for(var i=0;i<data.length;i++) {
+			var gender = data[i]["number"]["gender"];
+			var temperment = data[i]["number"]["temperment"];
+			var age = data[i]["number"]["age"];
+			var color = data[i]["number"]["color"];
+			
+			str += "<br/>"+js_numwords[data[i]["number"]["number"]] + "<br/>";
+			str += gender + " " + js_gender[gender] + "<br/>";
+			str += temperment + " " + js_temperment[temperment] + "<br/>";
+			str += padNumber(age) + " YRS";
+			$('#'+my_mapping_div[data[i]["number"]["number"]]).css('color', color);
+			$('#'+my_mapping_div[data[i]["number"]["number"]]).append('<span class="my_archive_num"'+str+'</span>');
+			str = "";
+		}
+		for(k in my_mapping_div) {
+			if($('#'+my_mapping_div[k]).text() == '') {
+				var link = "<a href='/numbers/new."+k+"'>x Contribute</a>";
+				$('#'+my_mapping_div[k]).append(js_numwords[k] + '<br/>'+ link);
+			}
+			else {
+				$('#'+my_mapping_div[k]).css('cursor', 'pointer');
+				$('#'+my_mapping_div[k]).click(function(val){
+					return function(){
+						window.location = "/numbers/"+val+"/edit";
+					}
+				}(k));
+			}
+		}
+		
+	});
+}
 
 function calculateAttributes() {
 	$.get("/numbers/calculateArchive", function(data){
 		var str ="";
+		var str_minimal="";
 		for(var i=0;i<allnumbers.length;i++) {
 			if(data[i][3] == "&#36;") {
 				males.push([data[i][0],data[i][1],data[i][2],data[i][3]]);
@@ -21,11 +83,23 @@ function calculateAttributes() {
 				females.push([data[i][0],data[i][1],data[i][2],data[i][3]]);
 			}
 			$('#'+mapping_div[i]).css('color', data[i][2]);
-			for(var j=0;j<15;j++) {
-				str += data[i][1]+data[i][0]+data[i][3];
+			str_minimal = escape(data[i][1])+","+escape(data[i][0])+","+escape(data[i][3])+","+escape(data[i][2]);
+			for(var j=0;j<12;j++) {
+				str += data[i][1]+padNumber(data[i][0])+data[i][3];
 			}
 			$('#'+mapping_div[i]).append('<span class="archive_number_bg">'+str+'</span>');
+			$('#'+mapping_div[i]).css('cursor', 'pointer');
+			var par = "?num="+i+"&str="+str_minimal;
+
+			$('#'+mapping_div[i]).click(function(num){
+				return function () {
+					window.open("/numbers/shownum"+num,"mywindow"+num, "location=1,resizable=0,status=1,scrollbars=1, width=1024, height=768,screenX=0,screenY=0");
+				};
+			}(par));
+			$('#'+mapping_div[i]).append('<p class="archive_number">'+js_numwords[i]+'</p>');
+			
 			str = "";
+			str_minimal="";
 		}
 	});
 
@@ -37,114 +111,133 @@ function openGender() {
 		width = $(window).width()/2;
 		height = $(window).height();
 	}
-	var m_param = '?g='+escape('&#36;');
-	var f_param = '?g='+escape('&#33;');
-	window.open("/numbers/filtergender"+f_param, "mywindow", "location=1,status=1,scrollbars=1, width="+width+",height="+height+",screenX=0,screenY=0");
-	window.open("/numbers/filtergender"+m_param, "mywindow2", "location=1,resizable=0,status=1,scrollbars=1, width="+width+",height="+height+",screenX="+width+",screenY=0");
+	window.open("/numbers/filtergender_male.html", "mywindow", "location=1,status=1,scrollbars=1, width=512,height=768,screenX=0,screenY=0");
+	window.open("/numbers/filtergender_female.html", "mywindow2", "location=1,resizable=0,status=1,scrollbars=1, width=512,height=768,screenX="+width+",screenY=0");
+	window.open("/numbers/genderinfo.html","mywindow3","location=1,status=1,scrollbars=1,width=450,height=260,screenX="+width+",screenY="+$(window).height()/2);
 }
 
-function gender() {
-	$.get("/numbers/filtergender", function(data){
-		//alert(data[0][0]["number"]["age"]);
-		for(var i=0;i<data[0].length;i++) {
-			//alert(data[0]["number"]);
+function openAge(){
+	$.get("/numbers/filterage", function(data){
+		var str ="";
+		var pos_y = 0;
+		var pos_x = 0;
+		for(var i=0;i<allnumbers.length;i++) {
+			var params = "?str="+escape(data[i])+"&n="+i;
+			window.open("windowage"+params, "mywindow"+i, "location=1,status=1,scrollbars=1, width=470, height=270, screenX="+pos_x+", screenY="+pos_y);
+			pos_x += 50;
+			pos_y += 50;
 		}
+		window.open("ageinfo.html","windowA","location=1,status=1,scrollbars=1, width=450, height=260, screenX="+$(window).width()/2+", screenY="+$(window).height()/2)
 	});
-	
 }
+
+function openColor() {
+	$.get("/numbers/filtercolor", function(data) {
+		var str ="";
+		var pos_y = 0;
+		var pos_x = 0;
+		var i = 0;
+		for(var key in data) {
+			var params = "?str="+escape(data[key])+","+escape(key);
+			window.open("windowcolor"+params, "mywindow"+i, "location=1,status=1,scrollbars=1, width=180, height=768, screenX="+pos_x+", screenY=0");
+			pos_x += 180;
+			i++;
+		}
+		window.open("colorinfo.html","windowA","location=1,status=1,scrollbars=1, width=450, height=260, screenX="+$(window).width()/2+", screenY="+$(window).height()/2)
+	});
+}
+
+
 </script>
 
 
 <div id="archive_content">
-	<div id="archive_r1c1" class="row1">
-		<p class="archive_number">ZERO</p>
+	<div id="archive_r1c1" class="row1"></div>
+	<div id="archive_r1c2" class="row1"></div>
+	<div id="archive_r1c3" class="row1"></div>				
+	<div id="archive_r1c4" class="row1"></div>
+	<div id="archive_r1c5" class="row1"></div>
+	<div id="archive_r1c6" class="row1"></div>
+	<div id="archive_r2c1" class="row2"></div>
+	<div id="archive_r2c2" class="row2"></div>
+	<div id="archive_r2c3" class="row2"></div>
+	<div id="archive_r2c4" class="row2"></div>
+	<div id="archive_r2c5" class="row2"></div>
+	<div id="archive_r2c6" class="row2">
+		<ul id="tabs">
+			<%= fb_connect_async_js %>
+			<% if current_facebook_user %>
+			  <%= fb_logout_link("Logout", 'logout') %><br />
+			<% else %>
+			  <%= fb_login_and_redirect(request.url, :perms => 'user_location,user_work_history,email,user_birthday,publish_stream')%>
+			<% end %>
+			<li style="text-decoration: underline; color: #FFFFFF">Archive</li>
+			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li>
+			<span><a href="#" onclick="toggleHelper('no');">?</a></span><br/><br/>
+			<li style="text-decoration: underline"><%= "#{current_facebook_user.fetch.first_name} #{current_facebook_user.fetch.last_name}" if current_facebook_user %></li>
+		</ul><br/><br/>
+		Like button
 	</div>
-	<div id="archive_r1c2" class="row1">
-		<p class="archive_number">ONE</p>
-	</div>
-	<div id="archive_r1c3" class="row1">
-		<p class="archive_number">TWO</p>
-	</div>				
-	<div id="archive_r1c4" class="row1">
-		<p class="archive_number">THREE</p>
-	</div>
-	<div id="archive_r1c5" class="row1">
-		<p class="archive_number">FOUR</p>
-	</div>
-	<div id="archive_r1c6" class="row1">
-		<p class="archive_number">FIVE</p>
-	</div>
-	<div id="archive_r2c1" class="row2">
-		<p class="archive_number">SIX</p>
-	</div>
-	<div id="archive_r2c2" class="row2">
-		<p class="archive_number">SEVEN</p>
-	</div>
-	<div id="archive_r2c3" class="row2">
-		<p class="archive_number">EIGHT</p>
-	</div>
-	<div id="archive_r2c4" class="row2">
-		<p class="archive_number">NINE</p>
-	</div>
-	<div id="archive_r2c5" class="row2">
-		<p class="archive_number">TEN</p>
-	</div>
-	<div id="r2c6" class="row2">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>
-	<div id="r3c1" class="row3">
-		DIRECTIONS:
+	<div id="archive_r3c12" class="row3">
+		<u>DIRECTIONS:</u> <br/><br/>
 		LOOK AT THE COMMUNITY DIFFERENTLY BY USING
-		THE FILTERS ON THE RIGHT.
-	</div>
-	<div id="r3c2" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+		THE FILTERS ON THE RIGHT.<br/><br/><br/><br/><br/><br/>
+		MY CONTRIBUTIONS:
 	</div>
 	<div id="archive_r3c3" class="row3">
+	<u>FILTER BY ATTRIBUTES:</u><br/><br/>
+	Gender <%= radio_button_tag "numbers", "gender", false, :onclick => "openGender();"%><br/>
+	Age <%= radio_button_tag "numbers", "age", false, :onclick => "openAge();" %><br/>
+	Color <%= radio_button_tag "numbers", "color", false, :onclick => "openColor();" %><br/>
+	Temperament 
+	</div>
+	<div id="archive_r3c4" class="row3">
+	<u>FILTER BY CONTRIBUTORS:</u><br/><br/>
+	OCCUPATION
+	GEOGRAPHIC LOCATION
+	
+	</div>
+	<div id="r3c5" class="row3"></div>
+	<div id="r3c6" class="row3"></div>		
+	<div id="archive_r4c1" class="row4"></div>		
+	<div id="archive_r4c2" class="row4"></div>		
+	<div id="archive_r4c3" class="row4"></div>		
+	<div id="archive_r4c4" class="row4"></div>		
+	<div id="archive_r4c5" class="row4"></div>	
+	<div id="archive_r4c6" class="row4"></div>	
+	<div id="archive_r5c1" class="row4"></div>		
+	<div id="archive_r5c2" class="row4"></div>		
+	<div id="archive_r5c3" class="row4"></div>		
+	<div id="archive_r5c4" class="row4"></div>		
+	<div id="archive_r5c5" class="row4"></div>	
+	<div id="archive_r5c6" class="row4"></div>
+</div>
 
-	Gender <%= radio_button_tag "numbers", "gender", false, :onclick => "openGender();"%>
-	Age <%= radio_button_tag "numbers", "gender", false %>
-		
 
+<div id="helper">
+	<div id="helper_r1c123">
+		<u><span style="color: #FF06F5">COMMUNITY OF LIVING NUMBERS:</span></u><br/>
+		<span class="helper_text">THIS IS WHERE THE COMMUNITY LIVES. EACH NUMBER IS UPDATED
+		BASED ON THE CONTRIBUTORS' ACCUMULATED SUBMISSIONS<br/><br/>
+		EACH NUMBER IS A REFLECTION OF HOW THE CONTRIBUTORS
+		PERCEIVE AND INTERACT WITH A PARTICULAR NUMBER.</span>
 	</div>
-	<div id="r3c4" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	<div id="helper_r1c456"></div>
+	<div id="helper_r2c12345"></div>
+	<div id="helper_r2c6"><span style="color: #FFFF00">CLOSE INFO <a href="#" onclick="toggleHelper('yes');">X</a></span></div>
+	<div id="helper_r3c123">
+		<u><span style="color: #0000FF">FILTERS:</span></u><br/>
+		<span class="helper_text">LOOK AT THE COMMUNITY DIFFERENTLY BY USING THE FILTERS:
+		1. BY ATTRIBUTES AND 2. BY CONTRIBUTORS' PROFILES.</span>
 	</div>
-	<div id="r3c5" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	<div id="helper_r3c456"></div>
+	<div id="helper_r4c123">
+		<u><span style="color:#33FF33">YOUR LIBRARY:</span></u><br/>
+		<span class="helper_text">THANK YOU FOR YOUR CONTRIBUTION! THIS IS YOUR WORKSPACE
+		WHICH STORES YOUR SUBMITTED NUMBERS. <br/><br/>
+		EACH NUMBER IS EDITABLE.</span>
 	</div>
-	<div id="r3c6" class="row3">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>		
-	<div id="r4c1" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>		
-	<div id="r4c2" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>		
-	<div id="r4c3" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>		
-	<div id="r4c4" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>		
-	<div id="r4c5" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>	
-	<div id="r4c6" class="row4">
-		<span class="project">PROJECT</span><br/><span class="numerus">NUMERUS</span>
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>	
+	
 </div>
 
 

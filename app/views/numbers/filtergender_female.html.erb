@@ -1,0 +1,61 @@
+<script>
+var allnumbers = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+var mapping_div = {0:'gender_r1c2', 1:'gender_r1c3', 2:'gender_r2c1', 3:'gender_r2c2', 4:'gender_r2c3', 5:'gender_r3c1', 6:'gender_r3c2', 7:'gender_r3c3', 8:'gender_r4c1', 9:'gender_r4c2', 10:'gender_r4c3'};
+var num_words = ["ZERO", "ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN"];
+
+function padNumber(n) {
+	if(n == 0 || n == 1 || n == 2 || n == 3 || n == 4 || n == 5 || n==6 || n==7 || n==8 || n ==9) {
+		var str = "0"+n;
+		return str;
+	}
+	else{
+		return n;
+	}
+}
+
+$(document).ready(function(){
+	$('.gender_main').append('&#33;');
+	var m_param = '?g='+escape('&#33;');
+	$.get("/numbers/filtergender"+m_param, function(data){
+		var str ="";
+		for(var i=0;i<data.length;i++) {
+			$('#'+mapping_div[i]).css('color', data[i][2]);
+			for(var j=0;j<12;j++) {
+				str += data[i][1]+padNumber(data[i][0])+data[i][3];
+			}
+			$('#'+mapping_div[i]).append('<span class="gender_number_bg">'+str+'</span>');
+			$('#'+mapping_div[i]).append('<p class="gender_number">'+num_words[data[i][4]]+'</p>');
+			str = "";
+		}
+	});
+});
+</script>
+
+<div id="gender_content">
+	<div id="r1c1" class="row1">
+		<span class="gender_main">FEMALE NUMBERS: <br/><br/><br/></span>
+	</div>
+	<div id="gender_r1c2" class="row1">
+	</div>
+	<div id="gender_r1c3" class="row1">
+	</div>				
+	<div id="gender_r2c1" class="row2">
+	</div>
+	<div id="gender_r2c2" class="row2">
+	</div>
+	<div id="gender_r2c3" class="row2">
+	</div>
+	<div id="gender_r3c1" class="row3">
+	</div>
+	<div id="gender_r3c2" class="row3">
+	</div>
+	<div id="gender_r3c3" class="row3">
+	</div>
+	<div id="gender_r4c1" class="row4">
+	</div>		
+	<div id="gender_r4c2" class="row4">
+	</div>		
+	<div id="gender_r4c3" class="row4">
+	</div>	
+</div>
+

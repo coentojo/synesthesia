@@ -1,2 +1,8 @@
-<%= @gen %> Numbers <br/>
-<%= @data.to_yaml %>
+<script>
+$(document).ready(function(){
+	var m_param = '?g='+escape('&#36;');
+	$.get("/numbers/filtergender"+m_param, function(data){
+		alert(data)
+	});
+});
+</script>
