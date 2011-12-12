@@ -11,16 +11,22 @@ Synesthesia::Application.routes.draw do
   get "numbers/filtergender_male"
   get "numbers/filtergender_female"
   get "numbers/filterage"
+  get "numbers/filtertemperment"
   get "numbers/windowage"
   get "numbers/filtercolor"
   get "numbers/windowcolor"
+  get "numbers/windowtemperment"
   get "numbers/calcmyattributes"
   get "numbers/shownum"
   get "numbers/genderinfo"
   get "numbers/ageinfo"
   get "numbers/colorinfo"
+  get "numbers/tempermentinfo"
   get "numbers/logout"
   get "users/logout"
+  
+  match "/auth/facebook/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
   
   
   resources :numbers

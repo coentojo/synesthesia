@@ -19,19 +19,21 @@
 	<div id="r2c1" class="row2">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="r2c2" class="row2">
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	<div id="about_r2c2" class="row2">
+		<span style="color:#FF06F5">MISSION</span><br/><br/><br/><br/><br/><br/>
+		<span style="color:#FF65F5">ABOUT US</span>
 	</div>
-	<div id="about_r2c3" class="row2">
-		<span style="color:#FF06F5">STATEMENT OF INTENT</span>
-	</div>
-	<div id="about_r2c45" class="row2">
-		Christina Nizar and Ji Yong (Raisa) Park met at Art Center College of Design where they challenged each other in the areas of both academic and visual communication of graphic design.  They are both process and research driven designers that enjoy fiddling with complicated ideas; thus, they collaborated to delve into a subject matter, Synesthesia that has recently become a rediscovery of modern researchers to examine. Probing into the layers of abstract and unresolved principles of Synesthesia, they allowed their contrasting idiosyncrasies to conduct the project: Ji Yong (Raisa), a Synesthete with Personality (OLP) Synesthesia and Christina who has a dyslexia which  affects her interaction and relationship with numbers.
-	
+	<div id="about_r2c345" class="row2">
+		 Countless is a project which challenges how we perceive and interact with numbers. It aims to emulate the synesthetic experience by creating a digital community of "living" numbers.<br/><br/><br/>
+				Christina Nizar and Ji Yong ‘Raisa’ Park met at Art Center College of Design where they both studied graphic design. There, they challenged each other in the areas of both academic and visual communication. Given that they are process and research driven designers who enjoy fiddling with complicated ideas, they probed into the layers of abstract and unresolved principles of Synesthesia. “Countless,” by which the project is called, allowed itself to be fostered by the designers’ contrasting idiosyncrasies: Raisa’s personality synesthesia and Christina’s dyslexia which have influenced both in their interaction with numbers. Countless is an effort to challenge the audience to rethink the meaning of symbols such as numbers and to re-codify the meaning in order to engage in the synesthetic experience. 	
 	</div>
 	<div id="home_r2c6" class="row2">
 		<ul id="tabs">
-			<li style="text-decoration: none">Register/Login</li>
+			<% if current_user %>
+				<%= link_to "Sign out", signout_path %>
+			<% else %>
+				<%= link_to "Sign in with FB", "/auth/facebook"%>
+			<% end %>
 			<li style="text-decoration: line-through; color: #000000">Archive</li>
 			<li style="text-decoration: underline"><%= link_to "About", users_about_path %></li>
 			<li style="text-decoration: none"><%= link_to "Home", users_community_path %></li>
@@ -41,16 +43,10 @@
 	<div id="r3c1" class="row3">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	
-	<div id="r3c2" class="row2">
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	<div id="about_r3c2" class="row2">
 	</div>
-	<div id="r3c3" class="row2">
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
-	</div>
-	<div id="r3c4" class="row2">
-	</div>
-	<div id="r3c5" class="row3">
+	<div id="about_r3c345" class="row2">
+
 	</div>
 	<div id="r3c6" class="row3">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
@@ -58,11 +54,11 @@
 	<div id="r4c1" class="row4">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>		
-	<div id="r4c2" class="row4">
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	<div id="about_r4c2" class="row4">
+		<br/><br/><span style="color:#FF65F5">CONTRIBUTORS</span>
 	</div>		
-	<div id="r4c3" class="row4">
-		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
+	<div id="about_r4c345" class="row4">
+		<br/><br/>Chris O is __________________. Special thanks to: Steve Kim and Nik Hafermaas
 	</div>		
 	<div id="r4c4" class="row4">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>

@@ -53,7 +53,7 @@ class NumbersController < ApplicationController
       puts "USERID"
       puts @number.user_id
       if @number.save
-        format.html { redirect_to(:controller => "users", :action => "community", :notice => 'Number was successfully created.') }
+        format.html { redirect_to(users_community_path, :notice => 'Number was successfully created.') }
       else
         format.html { redirect_to(root_path) }
       end
@@ -261,13 +261,80 @@ class NumbersController < ApplicationController
     @n = Integer(params["num"]);
     @attributes = params["str"].split(',')
     @equations = Numberlike.where(:num1 => @n)
-    
   end
   
-  def logout
-    reset_session
-    redirect_to(root_path)
+  def filtertemperment
+    nums = [0,1,2,3,4,5,6,7,8,9,10]
+    temperments = ["&#38;", "&#42;", "&#60;", "&#62;", "&#123;", "&#125;", "&#126;", "&#124;", "&#94;", "&#41;", "&#91;"]
+    
+    temp = Array.new
+    @data = {}
+    nums.each do |n|
+      #age,temperment, gender,color,number
+      temp << addPadding(averageAge(n))
+      puts "PADDED?"
+      puts temp
+      col = countColumn(n, "temperment")
+      temp << col
+      temp << countColumn(n,"gender")
+      temp << countColumn(n, "color")
+      temp << n
+      @data[col] ||= []
+      @data[col] << temp
+      temp = Array.new
+    end
+    @data.each do |k,v| 
+      temperments.delete(k) if temperments.include? k
+    end
+    temperments.each do |c|
+      @data[c] ||= []
+    end
+    render :json => @data
   end
+  
+  def windowtemperment 
+    @str = params["str"].split(',')
+    @temperment = @str[1]
+
+    @arr = Array.new
+    @bg = Array.new
+    @numbers = Array.new
+    temp = ""
+    #Number Array
+    g = 4
+    while g <= @str.length
+      @numbers << @str[g]
+      g += 5
+    end
+    #BG Color array
+    c = 3
+    while c <= @str.length
+      @bg << @str[c]
+      c += 5
+    end
+    #Attribute array
+    #remove bg colors
+    @str.each do |k|
+      @str.delete(k) if @bg.include? k
+    end
+    #remove nums
+    @str.each do |k|
+      @str.delete(k) if @numbers.include? k
+    end
+    i = 1
+    @str.each do |s|
+      if i%3 != 0
+        temp += s
+      else
+        temp += s
+        @arr << temp
+        temp = ""
+      end
+      i += 1
+    end
+    
+  end
+
 
 end
 

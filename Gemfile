@@ -1,10 +1,12 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
-gem 'facebooker2'
+#gem 'facebooker2'
 gem 'carmen'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'htmlentities'
+gem 'omniauth-facebook'
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 

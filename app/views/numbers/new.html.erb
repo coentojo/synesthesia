@@ -35,15 +35,14 @@ $(document).ready(function(){
 	</div>
 	<div id="community_r2c6" class="row2">
 		<ul id="tabs">
-			<%= fb_connect_async_js %>
-			<% if current_facebook_user %>
-			  <%= fb_logout_link("Logout", 'logout') %><br />
+			<% if current_user %>
+				<%= link_to "Sign out", signout_path %>
 			<% else %>
-			  <%= fb_login_and_redirect(request.url, :scope => 'user_location,user_work_history,email,user_birthday,publish_stream')%>
+				<%= link_to "Sign in with FB", "/auth/facebook"%>
 			<% end %>
 			<li style="text-decoration: line-through; color: #000000">Archive</li>
 			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li><br/>
-			<li style="text-decoration: underline"><%= "#{current_facebook_user.fetch.first_name} #{current_facebook_user.fetch.last_name}" if current_facebook_user %></li>
+			<li style="text-decoration: underline"></li>
 		</ul>	
 		Like button
 	</div>

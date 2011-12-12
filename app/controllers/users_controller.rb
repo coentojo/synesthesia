@@ -26,27 +26,11 @@ class UsersController < ApplicationController
   # GET /users/new
   # GET /users/new.xml
   def new
-    if(current_facebook_user) 
-       @fbuser = current_facebook_user.fetch
-       @name = @fbuser.name
-       @email = @fbuser.email
-       @age = @fbuser.birthday
-       @gender = @fbuser.gender
-       @location = Mogli::User.find(current_facebook_user.id, current_facebook_client).location
-  
-       #check if the logged in user has logged in before
-       check = User.find_by_email(@email)
-       if check
-         session[:user_id] = check.id
-         redirect_to users_community_path
-       else 
-         @user = User.new(:name => @name, :email => @email, :age => @age, :gender => @gender)
-         respond_to do |format|
-           format.html # new.html.erb
-         end
-       end
-     end
-
+    if current_user 
+      @user = User.find_by_uid(current_user.uid)
+    else
+      redirect_to root_url, :notice => "Please sign in"
+    end
   end
 
   # GET /users/1/edit
@@ -80,7 +64,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(numbers_community_path, :notice => 'User was successfully updated.') }
+        format.html { redirect_to(users_community_path, :notice => 'User was successfully updated') }
       else
         format.html { render :action => "edit" }
       end
@@ -106,9 +90,6 @@ class UsersController < ApplicationController
   
   #Home page where user logs in with FB
   def home
-    if(current_facebook_user)
-      redirect_to users_community_path
-    end
   end
   
   def community
@@ -119,11 +100,6 @@ class UsersController < ApplicationController
         @usernumbers << u.number
       end
     end
-  end
-  
-  def logout
-    reset_session
-    redirect_to(root_path)
   end
   
 end

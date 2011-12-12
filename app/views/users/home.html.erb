@@ -29,9 +29,9 @@
 	</div>
 	<div id="home_r2c6" class="row2">
 		<ul id="tabs">
-			<li style="text-decoration: underline">Register/Login</li>
 			<li style="text-decoration: line-through; color: #000000">Archive</li>
 			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li>
+			<li style="text-decoration: none"><%= link_to "Profile", new_user_path %></li>
 		</ul>	
 		Like button
 	</div>
@@ -53,12 +53,11 @@
 		PLEASE LOGIN TO YOUR
 		FACEBOOK ACCOUNT TO
 		ACCESS COUNTLESS.<br/><br/><br/><br/><br/>
-	<%= fb_connect_async_js %>
-	<% if current_facebook_user %>
-	  <%= fb_logout_link("Logout", 'logout') %><br />
-	<% else %>
-	  <%= fb_login_and_redirect(new_user_path, :scope => 'user_location,user_work_history,email,user_birthday,publish_stream') %>
-	<% end %>
+		<% if current_user %>
+			<%= link_to "Sign out", signout_path %>
+		<% else %>
+			<%= link_to "Sign in with FB", "/auth/facebook"%>
+		<% end %>
 	</div>		
 	<div id="r4c1" class="row4">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>

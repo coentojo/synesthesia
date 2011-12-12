@@ -1,0 +1,20 @@
+<% colors = {"#FF0000"=>"RED", "#FF6600"=>"ORANGE", "#FFFF00"=>"YELLOW", "#33FF33"=>"GREEN", "#0000FF"=>"BLUE", "#9900FF"=>"PURPLE", "#FF06F5"=>"PINK"} %>
+<% num_words = ["ZERO","ONE","TWO","THREE","FOUR","FIVE","SIX","SEVEN","EIGHT","NINE","TEN"] %>
+<% temperment_words = {"&#38;"=>"LAZY", "&#42;"=>"PESSIMISTIC", "&#60;"=>"NAIVE", "&#62;"=>"AGGRESSIVE", "&#123;"=>"MYSTERIOUS", "&#125;"=>"INDEPENDENT", "&#126;"=>"PERFECTIONIST", "&#124;"=>"PATRIOTIC", "&#94;"=>"CONSIDERATE", "&#41;"=>"OPTIMISTIC", "&#91;"=>"TOO COOL"} %>
+
+
+<div id="temperment_content">
+	<div id="temperment_r1c1">
+		<span style="font-size: 18pt"><u>TEMPERAMENT</u></span><br/><br/><br/>
+		<span style="font-size: 20pt"><%= temperment_words[@temperment] %></span>
+		<span style="font-size: 20pt"><%= @temperment.html_safe %></span>
+	</div>
+	<% i = 0%>
+	<% @arr.each do |a| %>
+		<div class="temperment_r2c1" style="color: <%= @bg[i] %>"> 
+			<%= a.html_safe*17%>
+			<span id="temperment_number"><%= num_words[Integer(@numbers[i])] %></span>
+			<% i += 1 %>
+		</div>
+	<% end %>
+</div>

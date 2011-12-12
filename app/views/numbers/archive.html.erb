@@ -153,6 +153,22 @@ function openColor() {
 	});
 }
 
+function openTemperment() {
+	$.get("/numbers/filtertemperment", function(data) {
+		var str ="";
+		var pos_y = 0;
+		var pos_x = 0;
+		var i = 0;
+		for(var key in data) {
+			var params = "?str="+escape(data[key]);
+			window.open("windowtemperment"+params, "mywindow"+i, "location=1,status=1,scrollbars=1, width=180, height=768, screenX="+pos_x+", screenY=0");
+			pos_x += 180;
+			i++;
+		}
+	//	window.open("tempermentinfo.html","windowA","location=1,status=1,scrollbars=1, width=450, height=260, screenX="+width_info+", screenY="+height_info);
+	});
+}
+
 
 </script>
 
@@ -171,16 +187,15 @@ function openColor() {
 	<div id="archive_r2c5" class="row2"></div>
 	<div id="archive_r2c6" class="row2">
 		<ul id="tabs">
-			<%= fb_connect_async_js %>
-			<% if current_facebook_user %>
-			  <%= fb_logout_link("Logout", 'logout') %><br />
+			<% if current_user %>
+				<%= link_to "Sign out", signout_path %>
 			<% else %>
-			  <%= fb_login_and_redirect(request.url, :scope => 'user_location,user_work_history,email,user_birthday,publish_stream')%>
+				<%= link_to "Sign in with FB", "/auth/facebook"%>
 			<% end %>
 			<li style="text-decoration: underline; color: #FFFFFF">Archive</li>
 			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li>
 			<span><a href="#" onclick="toggleHelper('no');">?</a></span><br/><br/>
-			<li style="text-decoration: underline"><%= "#{current_facebook_user.fetch.first_name} #{current_facebook_user.fetch.last_name}" if current_facebook_user %></li>
+			<li style="text-decoration: underline"></li>
 		</ul><br/><br/>
 		Like button
 	</div>
@@ -195,7 +210,7 @@ function openColor() {
 	Gender <%= radio_button_tag "numbers", "gender", false, :onclick => "openGender();"%><br/>
 	Age <%= radio_button_tag "numbers", "age", false, :onclick => "openAge();" %><br/>
 	Color <%= radio_button_tag "numbers", "color", false, :onclick => "openColor();" %><br/>
-	Temperament 
+	Temperament <%= radio_button_tag "numbers", "temperment", false, :onclick => "openTemperment();" %><br/>
 	</div>
 	<div id="archive_r3c4" class="row3">
 	<u>FILTER BY CONTRIBUTORS:</u><br/><br/>

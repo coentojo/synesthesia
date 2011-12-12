@@ -3,7 +3,7 @@
 <% num_padding = ["00", "01", "02","03","04","05","06","07","08",'09']%>
 <% temp_words = {"&#38;"=>"LAZY", "&#42;"=>"PESSIMISTIC", "&#60;"=>"NAIVE", "&#62;"=>"AGGRESSIVE", "&#123;"=>"MYSTERIOUS", "&#125;"=>"INDEPENDENT", "&#126;"=>"PERFECTIONIST", "&#124;"=>"PATRIOTIC", "&#94;"=>"CONSIDERATE", "&#41;"=>"OPTIMISTIC", "&#91;"=>"TOO COOL"} %>
 <% gender_words = {"&#36;"=>"MALE","&#33;"=>"FEMALE"}%>
-<% num_personas = {"&#38;"=>"year old male who thinks fast food is slow and wishes that there were something faster.", "&#42;"=>"year old male who suffers from a chronic migraine, a medical phenomenon due to his hopeless outlook on life.", "&#60;"=>"year old male with little or no perspective on matters, is generally care-free.", "&#62;"=>"year old male, whose friends call him a 'steamroller.'", "&#123;"=>"year old male who...no one really knows.", "&#125;"=>"year old male who doesn’t like to admit he’s incapable of accomplishing anything.", "&#126;"=>"year old male whose every day mission is to achieve the only one and simple goal: perfection.", "&#124;"=>"year old male who has a flair for anything with stars and stripes.", "&#94;"=>"year old male who's adored by the rest of the numbers for always being generous with his time and ability to help others.", "&#41;"=>"year old male is an optimist who always “stops and smells the roses.”", "&#91;"=>"year old male who thinks he is a man too soon and too sophisticated for his time."} %>
+<% num_personas = {"&#38;"=>"who thinks fast food is slow and wishes that there were something faster.", "&#42;"=>"who suffers from a chronic migraine, a medical phenomenon due to the hopeless outlook on life.", "&#60;"=>"with little or no perspective on matters, is generally care-free.", "&#62;"=>", whose friends refer to a “steamroller.”", "&#123;"=>"who...no one really knows.", "&#125;"=>"who is self-sustaining even on an island.", "&#126;"=>"whose every day mission is to achieve the only one and simple goal: perfection.", "&#124;"=>"who has a flair for anything with stars and stripes.", "&#94;"=>"who’s adored by the rest of the numbers for always being generous and thoughtful.", "&#41;"=>"is an optimist who always “stops and smells the roses.”", "&#91;"=>"who is too cool for school."} %>
 
 <div id="show_content">
 	<div id="show_r1c1" class="row1" style="border: 1px solid <%=@attributes[3]%>">
@@ -11,7 +11,7 @@
 	</div>
 	<div id="show_r1c23" class="row1">
 		<span class="attr_story">
-			<%= num_words[@n]%> is a <%= @attributes[1].html_safe %> <%= num_personas[@attributes[0]]%>
+			<%= num_words[@n]%> is a <%= @attributes[1].html_safe %> year old <%= gender_words[@attributes[2]] %> <%= num_personas[@attributes[0]]%>
 		</span>
 	</div>
 	<div id="show_r1c4" class="row1">
