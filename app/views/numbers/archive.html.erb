@@ -158,11 +158,23 @@ function openTemperment() {
 		var str ="";
 		var pos_y = 0;
 		var pos_x = 0;
+		var y_incr = 0;
+		var x_incr = 0;
 		var i = 0;
+		var col = 1;
 		for(var key in data) {
 			var params = "?str="+escape(data[key]);
-			window.open("windowtemperment"+params, "mywindow"+i, "location=1,status=1,scrollbars=1, width=180, height=768, screenX="+pos_x+", screenY=0");
-			pos_x += 180;
+			window.open("windowtemperment"+params, "mywindow"+i, "location=1,status=1,scrollbars=1, width=341, height=170, screenX="+pos_x+", screenY="+pos_y);
+			
+			if(col == 3) {
+				pos_y += 220;
+				pos_x = 0;
+				col = 1;
+			}
+			else {
+				pos_x += 341;	
+				col++;
+			}
 			i++;
 		}
 	//	window.open("tempermentinfo.html","windowA","location=1,status=1,scrollbars=1, width=450, height=260, screenX="+width_info+", screenY="+height_info);
@@ -214,7 +226,7 @@ function openTemperment() {
 	</div>
 	<div id="archive_r3c4" class="row3">
 	<u>FILTER BY CONTRIBUTORS:</u><br/><br/>
-	OCCUPATION
+	OCCUPATION 
 	GEOGRAPHIC LOCATION
 	
 	</div>

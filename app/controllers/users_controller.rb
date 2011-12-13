@@ -90,6 +90,7 @@ class UsersController < ApplicationController
   
   #Home page where user logs in with FB
   def home
+    
   end
   
   def community

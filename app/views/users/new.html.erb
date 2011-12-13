@@ -50,10 +50,10 @@
 	<div id="r3c4" class="row3">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="newuser_r3c56" class="row3">
-		HELLO, <%= @name %>.<br/><br/>
+	<div id="newuser_r3c56" class="row3" style="border: 1px solid #000000">
+		<span id="new_intro">HELLO, <u><%= current_user.name if current_user %></u>.<br/><br/>
 		IT IS VERY IMPORTANT TO US TO UNDERSTAND WHO YOU ARE AS
-		A UNIQUE CONTRIBUTOR TO GENERATING SPECIFIC CONTENT.<br/>
+		A UNIQUE CONTRIBUTOR TO GENERATING SPECIFIC CONTENT.</span><br/>
 		
 		<%= render 'form_simplified' %>
 		

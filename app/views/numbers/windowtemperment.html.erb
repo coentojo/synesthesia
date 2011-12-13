@@ -5,16 +5,17 @@
 
 <div id="temperment_content">
 	<div id="temperment_r1c1">
-		<span style="font-size: 18pt"><u>TEMPERAMENT</u></span><br/><br/><br/>
-		<span style="font-size: 20pt"><%= temperment_words[@temperment] %></span>
-		<span style="font-size: 20pt"><%= @temperment.html_safe %></span>
+		<span id="temp_heading"><u>TEMPERAMENT</u></span><br/><br/><br/>
+		<span id="temp_type"><%= temperment_words[@temperment] %><br/><%= @temperment.html_safe %></span>
 	</div>
 	<% i = 0%>
+	<% j = 2%>
 	<% @arr.each do |a| %>
-		<div class="temperment_r2c1" style="color: <%= @bg[i] %>"> 
-			<%= a.html_safe*17%>
+		<div id="temperment_r1c<%= j %>" style="color: <%= @bg[i] %>"> 
+			<%= a.html_safe*14%>
 			<span id="temperment_number"><%= num_words[Integer(@numbers[i])] %></span>
 			<% i += 1 %>
+			<% j += 1 %>
 		</div>
 	<% end %>
 </div>
