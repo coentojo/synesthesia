@@ -338,7 +338,11 @@ class NumbersController < ApplicationController
     end
 
   end
-
+  
+  def filteroccupation
+    occ = params["occ"]
+    Number.all(:include => :user, :conditions => {:users => {:occupation => occ}})
+  end
 
 end
 

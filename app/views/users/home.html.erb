@@ -1,3 +1,26 @@
+<script>
+$(document).ready(function(){
+	$('#content').css('display','none');
+	$('#gif2').css('display','none');
+	$('#gif3').css('display','none');
+	$('#gif4').css('display','none');
+	$('#gif5').css('display','none');	
+});
+
+function loadGif(n) {
+	$('#gif'+(n-1)).css('display', 'none');
+	$('#gif'+n).css('display', 'block');
+}
+function loadContent(n) {
+	$('#gif'+n).css('display', 'none');
+	$('#content').css('display', 'block');
+}
+</script>
+<div id="gif1" onclick = "loadGif(2);"></div>
+<div id="gif2" onclick = "loadGif(3);"></div>
+<div id="gif3" onclick = "loadGif(4);"></div>
+<div id="gif4" onclick = "loadGif(5);"></div>
+<div id="gif5" onclick = "loadContent(5);"></div>
 <div id="content">
 	<div id="r1c1" class="row1">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>

@@ -26,7 +26,13 @@ ul#tabs { padding: 5px; margin: 0px; list-style-type: none; }
 #home_r2c234 { width: 493px; height: 130px; margin-bottom: 15px; margin-left: 15px; float: left; font-size: 22pt; color: #0000FF; text-transform: uppercase; line-height: 130%; text-align: center; padding-top: 30px; }
 #home_r3c234 { width: 493px; height: 170px; margin-left: 15px; float: left; font-size: 22pt; color: #0000FF; text-transform: uppercase; line-height: 130%; text-align: center; }
 #home_r3c6 {width: 153px; height: 170px; margin-left: 15px; float: left; font-size: 11pt; color: #0000FF; line-height: 1.27em}
-#home_r1c6 {background: url('/images/LOGO.jpg'); width: 153px; height: 170px; margin-left: 15px; float: left; }
+#home_r1c6 {background: url('/images/LOGO.png'); width: 153px; height: 170px; margin-left: 15px; float: left; }
+
+#gif1 {background: url('/images/SCREENS_INTRO_P1.1.gif'); width: 1024px; height: 768px; margin-left: auto; margin-right: auto; cursor: pointer}
+#gif2 {background: url('/images/SCREENS_INTRO_P2.1.gif'); width: 1024px; height: 768px; margin-left: auto; margin-right: auto; cursor: pointer}
+#gif3 {background: url('/images/SCREENS_INTRO_P3.1.gif'); width: 1024px; height: 768px; margin-left: auto; margin-right: auto; cursor: pointer}
+#gif4 {background: url('/images/SCREENS_INTRO_P4.1.gif'); width: 1024px; height: 768px; margin-left: auto; margin-right: auto; cursor: pointer}
+#gif5 {background: url('/images/SCREENS_INTRO_P5.1.gif'); width: 1024px; height: 768px; margin-left: auto; margin-right: auto; cursor: pointer}
 
 
 /*****************************/
@@ -80,7 +86,7 @@ p.archive_number {font-family: Numerus; color: #FFFFFF; font-size: 36pt; text-al
 .show_archive_number { font-family: Numerus; color: #FFFFFF; font-size: 36pt; text-align: center; padding: 33px 0 0 0;  }
 #archive_r3c3 { width: 155px; height: 170px; margin-left: 15px; float: left; color:#FFFFFF; font-size: 9pt; line-height: 1.27em;}
 #archive_r3c12 {width: 325px; height: 170px; margin-left: 15px; float: left; color:#FFFFFF; font-size: 9pt; line-height: 1.27em;}
-#archive_r3c4 { width: 155px; height: 170px; margin-left: 15px; float: left; color:#FFFFFF; font-size: 9pt; line-height: 1.27em;}
+#archive_r3c45 { width: 310px; height: 170px; margin-left: 15px; float: left; color:#FFFFFF; font-size: 9pt; line-height: 1.27em;}
 #archive_r4c1, #archive_r4c2, #archive_r4c3, #archive_r4c4, #archive_r4c5, #archive_r4c6, #archive_r5c1, #archive_r5c2, #archive_r5c3, #archive_r5c4, #archive_r5c5, #archive_r5c6 {width: 153px; height: 75px; margin-left: 15px; float: left; color: #FFFFFF; font-size: 11pt; line-height: 1.27em }
 #archive_r2c6 { width: 153px; height: 170px; margin-left: 15px; border: 1px solid; float: left; font-size: 12pt; color: #FFFFFF;}
 
