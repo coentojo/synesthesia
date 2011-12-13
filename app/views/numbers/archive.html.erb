@@ -60,7 +60,7 @@ function loadMyAttributes(){
 		}
 		for(k in my_mapping_div) {
 			if($('#'+my_mapping_div[k]).text() == '') {
-				var link = "<span style='color:#FFFFFF'><a>href='/numbers/new."+k+"'>x Contribute</a></span>";
+				var link = "<span style='color:#FFFFFF'><a href='/numbers/new."+k+"'>x Contribute</a></span>";
 				$('#'+my_mapping_div[k]).append(js_numwords[k] + '<br/>'+ link);
 			}
 			else {
