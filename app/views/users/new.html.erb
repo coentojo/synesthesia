@@ -1,4 +1,4 @@
-<div id="content">
+<div id="new_user_content">
 	<div id="r1c1" class="row1">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
@@ -33,10 +33,16 @@
 	</div>
 	<div id="newuser_r2c6" class="row2">
 		<ul id="tabs">
-			<li style="text-decoration: line-through">Archive</li>
+			<% if current_user %>
+				<li style="text-decoration: none; color: #FFFFFF"><%= link_to "Archive", numbers_archive_path %></li>
+			
+			<% else %>
+				<li style="text-decoration: line-through; color: #000000">Archive</li>
+			
+			<% end %>
 			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li>
-		</ul>	
-		Like button
+		</ul>	<br/><br/><br/><br/>
+			<div class="fb-like" id="fblike" data-href="http://www.countless.info" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 	</div>
 	<div id="r3c1" class="row3">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
@@ -50,7 +56,7 @@
 	<div id="r3c4" class="row3">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="newuser_r3c56" class="row3" style="border: 1px solid #000000">
+	<div id="newuser_r3c56" class="row3">
 		<span id="new_intro">HELLO, <u><%= current_user.name if current_user %></u>.<br/><br/>
 		IT IS VERY IMPORTANT TO US TO UNDERSTAND WHO YOU ARE AS
 		A UNIQUE CONTRIBUTOR TO GENERATING SPECIFIC CONTENT.</span><br/>

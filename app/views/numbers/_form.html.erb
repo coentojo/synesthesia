@@ -123,7 +123,7 @@ function toggleSubmit(){
 <div id="number_row">
   <div id="number_gender_div">
     <%= f.label :gender, :class => "attribute_headings" %><br />
-	<%= f.select :gender, options_for_select(gender_types, :selected => @number.gender), {}, :onchange => "showAttribute(this.id, this.value);", :onblur => "toggleSubmit();" %>
+	<%= f.select "gender", options_for_select(gender_types, :selected => @number.gender), {}, :onchange => "showAttribute(this.id, this.value);", :onblur => "toggleSubmit();" %>
   </div>
   <div id="number_age_div">
     <%= f.label :age, :class => "attribute_headings" %><br />

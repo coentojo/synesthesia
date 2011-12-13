@@ -94,6 +94,9 @@ class UsersController < ApplicationController
   end
   
   def community
+    if current_user
+      @name = current_user.name
+    end
     @usernumbers = Array.new
     usernumbers = Number.where(:user_id => session[:user_id])
     usernumbers.each do |u| 

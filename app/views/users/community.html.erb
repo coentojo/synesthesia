@@ -38,13 +38,16 @@
 		<ul id="tabs">
 			<% if current_user %>
 				<%= link_to "Sign out", signout_path %>
-			<% else %>
-				<%= link_to "Sign in with FB", "/auth/facebook"%>
+				<li style="text-decoration: none; color: #FFFFFF"><%= link_to "Archive", numbers_archive_path %></li>
+			
+			<% else %>				
+				<%= link_to "Sign in", "/auth/facebook"%>
+				<li style="text-decoration: line-through; color: #000000">Archive</li>
 			<% end %>
-			<li style="text-decoration: line-through; color: #000000">Archive</li>
 			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li><br/><br/>
-			<li style="text-decoration: underline"><%= @name %></li>
-		</ul><br/><br/>
+			<li style="text-decoration: underline"><%= @name %></li><br/>
+			<div class="fb-like" id="fblike" data-href="http://www.countless.info" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+		</ul>
 	</div>
 	<div id="r3c1" class="row3"></div>
 	<div id="r3c2" class="row3"></div>

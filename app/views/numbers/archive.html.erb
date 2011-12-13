@@ -14,8 +14,6 @@ var females = new Array();
 $(document).ready(function(){
 	calculateAttributes();
 	loadMyAttributes();
-	//CHANGE THIS BELOW TO 'BLOCK' WHEN FINISHED!!!!!!!!
-	$('#helper').css('display','none');
 	$('#helper').css('width',$(window).width());
 	$('#helper').css('height',$(window).height());
 });
@@ -113,6 +111,7 @@ function calculateAttributes() {
 }	
 	var width_info = $(window).width()/2 - 200;
 	var height_info = $(window).height()/2 - 100;
+	
 function openGender() {
 	var width = 400;
 	var height = 400; 
@@ -180,20 +179,42 @@ function openTemperment() {
 			}
 			i++;
 		}
-	//	window.open("tempermentinfo.html","windowA","location=1,status=1,scrollbars=1, width=450, height=260, screenX="+width_info+", screenY="+height_info);
+		window.open("tempermentinfo.html","windowA","location=1,status=1,scrollbars=1, width=341, height=170, screenX="+pos_x+", screenY="+pos_y);
 	});
 }
 
 function changeArchive(occ) {
-	$.get("/numbers/filteroccupation", function(data) {
-		
+	$.get("/numbers/filteroccupation?occ="+occ, function(data) {
+		var str ="";
+		var str_minimal="";
+		for(var i=0;i<allnumbers.length;i++) {
+			$('#'+mapping_div[i]).css('color', data[i][2]);
+			str_minimal = escape(data[i][1])+","+escape(data[i][0])+","+escape(data[i][3])+","+escape(data[i][2]);
+			for(var j=0;j<12;j++) {
+				str += data[i][1]+padNumber(data[i][0])+data[i][3];
+			}
+			$('#'+mapping_div[i]).empty();
+			$('#'+mapping_div[i]).append('<span class="archive_number_bg">'+str+'</span>');
+			$('#'+mapping_div[i]).css('cursor', 'pointer');
+			var par = "?num="+i+"&str="+str_minimal;
+
+			$('#'+mapping_div[i]).click(function(num){
+				return function () {
+					window.open("/numbers/shownum"+num,"mywindow"+num, "location=1,resizable=0,status=1,scrollbars=1, width=1024, height=768,screenX=0,screenY=0");
+				};
+			}(par));
+			$('#'+mapping_div[i]).append('<p class="archive_number">'+js_numwords[i]+'</p>');
+			
+			str = "";
+			str_minimal="";
+		}
 	});
 }
 
 
 </script>
 
-
+<div id="archive">
 <div id="archive_content">
 	<div id="archive_r1c1" class="row1"></div>
 	<div id="archive_r1c2" class="row1"></div>
@@ -207,6 +228,7 @@ function changeArchive(occ) {
 	<div id="archive_r2c4" class="row2"></div>
 	<div id="archive_r2c5" class="row2"></div>
 	<div id="archive_r2c6" class="row2">
+		<span id="archive_menu">
 		<ul id="tabs">
 			<% if current_user %>
 				<%= link_to "Sign out", signout_path %>
@@ -216,28 +238,25 @@ function changeArchive(occ) {
 			<li style="text-decoration: underline; color: #FFFFFF">Archive</li>
 			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li>
 			<span><a href="#" onclick="toggleHelper('no');">?</a></span><br/><br/>
-			<li style="text-decoration: underline"></li>
+			<li style="text-decoration: underline; color: #FFFFFF"><%= current_user.name if current_user %></li><br/>
+			<div class="fb-like" id="fblike" data-href="http://www.countless.info" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 		</ul><br/><br/>
-		Like button
+		</span>
 	</div>
 	<div id="archive_r3c12" class="row3">
 		<u>DIRECTIONS:</u> <br/><br/>
 		LOOK AT THE COMMUNITY DIFFERENTLY BY USING
-		THE FILTERS ON THE RIGHT.<br/><br/><br/><br/><br/><br/>
+		<br/>THE FILTERS ON THE RIGHT.<br/><br/><br/><br/><br/><br/>
 		MY CONTRIBUTIONS:
 	</div>
 	<div id="archive_r3c3" class="row3">
 	<u>FILTER BY ATTRIBUTES:</u><br/><br/>
-	Gender <%= radio_button_tag "numbers", "gender", false, :onclick => "openGender();"%><br/>
-	Age <%= radio_button_tag "numbers", "age", false, :onclick => "openAge();" %><br/>
-	Color <%= radio_button_tag "numbers", "color", false, :onclick => "openColor();" %><br/>
-	Temperament <%= radio_button_tag "numbers", "temperment", false, :onclick => "openTemperment();" %><br/>
+	<%= radio_button_tag "numbers", "gender", false, :onclick => "openGender();"%> Gender<br/>
+	<%= radio_button_tag "numbers", "age", false, :onclick => "openAge();" %> Age<br/>
+	<%= radio_button_tag "numbers", "color", false, :onclick => "openColor();" %> Color<br/>
+	<%= radio_button_tag "numbers", "temperment", false, :onclick => "openTemperment();" %> Temperament<br/>
 	</div>
 	<div id="archive_r3c45" class="row3">
-	<u>FILTER BY CONTRIBUTORS:</u><br/><br/>
-	OCCUPATION 
-	GEOGRAPHIC LOCATION
-	
 	</div>
 	<div id="r3c6" class="row3"></div>		
 	<div id="archive_r4c1" class="row4"></div>		
@@ -256,29 +275,27 @@ function changeArchive(occ) {
 
 
 <div id="helper">
-	<div id="helper_r1c123">
-		<u><span style="color: #FF06F5">COMMUNITY OF LIVING NUMBERS:</span></u><br/>
+	<div id="helper_r1c123456">
+		<u><span style="color: #FF06F5">COMMUNITY OF LIVING NUMBERS:</span></u><br/><br/>
 		<span class="helper_text">THIS IS WHERE THE COMMUNITY LIVES. EACH NUMBER IS UPDATED
 		BASED ON THE CONTRIBUTORS' ACCUMULATED SUBMISSIONS<br/><br/>
 		EACH NUMBER IS A REFLECTION OF HOW THE CONTRIBUTORS
 		PERCEIVE AND INTERACT WITH A PARTICULAR NUMBER.</span>
 	</div>
-	<div id="helper_r1c456"></div>
 	<div id="helper_r2c12345"></div>
 	<div id="helper_r2c6"><span style="color: #FFFF00">CLOSE INFO <a href="#" style="color:#FFFFFF" onclick="toggleHelper('yes');">X</a></span></div>
-	<div id="helper_r3c123">
-		<u><span style="color: #0000FF">FILTERS:</span></u><br/>
+	<div id="helper_r3c123456">
+		<u><span style="color: #0000FF">FILTERS:</span></u><br/><br/>
 		<span class="helper_text">LOOK AT THE COMMUNITY DIFFERENTLY BY USING THE FILTERS:
 		1. BY ATTRIBUTES AND 2. BY CONTRIBUTORS' PROFILES.</span>
 	</div>
-	<div id="helper_r3c456"></div>
-	<div id="helper_r4c123">
-		<u><span style="color:#33FF33">YOUR LIBRARY:</span></u><br/>
-		<span class="helper_text">THANK YOU FOR YOUR CONTRIBUTION! THIS IS YOUR WORKSPACE
+	<div id="helper_r4c123456">
+		<u><span style="color:#33FF33">YOUR LIBRARY:</span></u><br/><br/>
+		<span class="helper_text">THANK YOU FOR YOUR CONTRIBUTION. THIS IS YOUR WORKSPACE<br/>
 		WHICH STORES YOUR SUBMITTED NUMBERS. <br/><br/>
 		EACH NUMBER IS EDITABLE.</span>
 	</div>
-	
+</div>
 </div>
 
 

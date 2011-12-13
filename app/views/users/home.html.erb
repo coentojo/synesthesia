@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function(){
-	$('#content').css('display','none');
+	$('#home').css('display','none');
 	$('#gif2').css('display','none');
 	$('#gif3').css('display','none');
 	$('#gif4').css('display','none');
@@ -13,7 +13,7 @@ function loadGif(n) {
 }
 function loadContent(n) {
 	$('#gif'+n).css('display', 'none');
-	$('#content').css('display', 'block');
+	$('#home').css('display', 'block');
 }
 </script>
 <div id="gif1" onclick = "loadGif(2);"></div>
@@ -42,9 +42,9 @@ function loadContent(n) {
 	<div id="r2c1" class="row2">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
-	<div id="home_r2c234" class="row2">
+	<div id="home_r2c234" class="row2"><br/>
 		COUNTLESS IS A PROJECT WHICH
-		 CHALLENGES HOW WE PERCEIVE
+		 CHALLENGES HOW WE PERCEIVE<br/>
 		 AND INTERACT WITH NUMBERS.
 	</div>
 	<div id="r2c5" class="row2">
@@ -52,11 +52,17 @@ function loadContent(n) {
 	</div>
 	<div id="home_r2c6" class="row2">
 		<ul id="tabs">
-			<li style="text-decoration: line-through; color: #000000">Archive</li>
+			<% if current_user %>
+				<%= link_to "Sign out", signout_path %>
+				<li style="text-decoration: none; color: #FFFFFF"><%= link_to "Archive", numbers_archive_path %></li>
+			
+			<% else %>
+				<li style="text-decoration: line-through; color: #000000">Archive</li>
+			
+			<% end %>
 			<li style="text-decoration: none"><%= link_to "About", users_about_path %></li>
-			<li style="text-decoration: none"><%= link_to "Profile", new_user_path %></li>
-		</ul>	
-		Like button
+		</ul><br/><br/><br/><br/>
+		<div class="fb-like" id="fblike" data-href="http://www.countless.info" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 	</div>
 	<div id="r3c1" class="row3">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
@@ -65,21 +71,18 @@ function loadContent(n) {
 	<div id="home_r3c234" class="row2">
 	   IT AIMS TO EMULATE THE
 	 SYNESTHETIC EXPERIENCE BY
-	CREATING A DIGITAL COMMUNITY
-	    OF “LIVING” NUMBERS.
+	CREATING A DIGITAL COMMUNITY<br/>OF “LIVING” NUMBERS.
 	</div>
 
 	<div id="r3c5" class="row3">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
 	</div>
 	<div id="home_r3c6" class="row3">
+		<% if !current_user %>
 		PLEASE LOGIN TO YOUR
 		FACEBOOK ACCOUNT TO
 		ACCESS COUNTLESS.<br/><br/><br/><br/><br/>
-		<% if current_user %>
-			<%= link_to "Sign out", signout_path %>
-		<% else %>
-			<%= link_to "Sign in with FB", "/auth/facebook"%>
+			<%= link_to(image_tag("/images/fb_login.png"), "/auth/facebook", :id => "login") %>
 		<% end %>
 	</div>		
 	<div id="r4c1" class="row4">

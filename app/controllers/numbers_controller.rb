@@ -341,7 +341,64 @@ class NumbersController < ApplicationController
   
   def filteroccupation
     occ = params["occ"]
-    Number.all(:include => :user, :conditions => {:users => {:occupation => occ}})
+    @numbers = {}
+    n = Number.all(:include => :user, :conditions => {:users => {:occupation => occ}}).group_by(&:number)
+    n.each do |k,v|
+      if n[k].length > 1
+        temp = {}
+        color = {}
+        gender = {}
+        age = 0
+        n[k].each do |p|
+          age += p.age
+          temp[p.temperment] ||= []
+          temp[p.temperment] << p.temperment
+          color[p.color] ||= []
+          color[p.color] << p.color
+          gender[p.gender] ||= []
+          gender[p.gender] << p.gender
+        end
+        #find age avg
+        @age = age/n[k].length
+        #find temperment max
+        max = 0
+        temp.each do |k,v|
+          if temp[k].length > max
+            max = temp[k].length
+            @temperment = k
+          end
+        end
+        #find color max
+        max = 0
+        color.each do |k,v|
+          if color[k].length > max
+            max = color[k].length
+            @color = k
+          end
+        end
+        #find gender max
+        max = 0
+        gender.each do |k,v|
+          if gender[k].length > max
+            max = gender[k].length
+            @gender = k
+          end
+        end
+        str = @age.to_s + "," + @temperment + "," + @color + "," + @gender
+        @numbers[k] ||= []
+        @numbers[k] << str
+      else
+        @age = n[k][0].age
+        @temperment = n[k][0].temperment
+        @color = n[k][0].color
+        @gender = n[k][0].gender
+        str = @age.to_s + "," + @temperment + "," + @color + "," + @gender
+        @numbers[k] ||= []
+        @numbers[k] << str
+      end
+    end
+    @numbers.sort
+    
   end
 
 end

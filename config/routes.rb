@@ -22,8 +22,7 @@ Synesthesia::Application.routes.draw do
   get "numbers/ageinfo"
   get "numbers/colorinfo"
   get "numbers/tempermentinfo"
-  get "numbers/logout"
-  get "users/logout"
+  get "numbers/filteroccupation"
   
   match "/auth/facebook/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout

@@ -4,15 +4,17 @@
 <% i = 0 %>
 <div id="color_content">
 	<div id="color_r1c1" class="row1" style="background-color: <%= @bg %>">
-		<span style="font-size: 18pt"><u>COLOR</u></span><br/><br/><br/>
+		<br/><br/><br/>
 		<span style="font-size: 20pt"><%= colors[@bg]%></span>
 	</div>
 	<% i = 0%>
+	<% j = 2%>
 	<% @arr.each do |a| %>
-		<div id="color_r2c1" style="color: <%= @bg %>"> 
+		<div id="color_r<%= j %>c1" style="color: <%= @bg %>"> 
 			<%= a.html_safe*17%>
 			<span id="color_number"><%= num_words[Integer(@numbers[i])] %></span>
 			<% i += 1 %>
+			<% j += 1 %>
 		</div>
 	<% end %>
 </div>

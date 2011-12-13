@@ -14,13 +14,13 @@ function padNumber(n) {
 }
 
 $(document).ready(function(){
-	$('.gender_main').append('&#36;');
+	$('#gender_r1c1').append('<p class="gender_type">&#36;</p>');
 	var m_param = '?g='+escape('&#36;');
 	$.get("/numbers/filtergender"+m_param, function(data){
 		var str ="";
 		for(var i=0;i<data.length;i++) {
 			$('#'+mapping_div[i]).css('color', data[i][2]);
-			for(var j=0;j<12;j++) {
+			for(var j=0;j<9;j++) {
 				str += data[i][1]+padNumber(data[i][0])+data[i][3];
 			}
 			$('#'+mapping_div[i]).append('<span class="gender_number_bg">'+str+'</span>');
@@ -32,8 +32,8 @@ $(document).ready(function(){
 </script>
 
 <div id="gender_content">
-	<div id="r1c1" class="row1">
-		<span class="gender_main">MALE NUMBERS: <br/><br/><br/></span>
+	<div id="gender_r1c1" class="row1">
+		<span class="gender_main">MALE NUMBERS:</span><br/><br/><br/>
 	</div>
 	<div id="gender_r1c2" class="row1">
 	</div>
