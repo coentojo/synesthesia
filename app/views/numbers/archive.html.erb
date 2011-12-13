@@ -60,7 +60,7 @@ function loadMyAttributes(){
 		}
 		for(k in my_mapping_div) {
 			if($('#'+my_mapping_div[k]).text() == '') {
-				var link = "<a href='/numbers/new."+k+"'>x Contribute</a>";
+				var link = "<span style='color:#FFFFFF'><a href='/numbers/new."+k+"'>x Contribute</a></span>";
 				$('#'+my_mapping_div[k]).append(js_numwords[k] + '<br/>'+ link);
 			}
 			else {
@@ -257,6 +257,9 @@ function changeArchive(occ) {
 	<%= radio_button_tag "numbers", "temperment", false, :onclick => "openTemperment();" %> Temperament<br/>
 	</div>
 	<div id="archive_r3c45" class="row3">
+	<u>FILTER BY CONTRIBUTORS:</u><br/><br/>
+	OCCUPATION <br/>
+	GEOGRAPHIC LOCATION
 	</div>
 	<div id="r3c6" class="row3"></div>		
 	<div id="archive_r4c1" class="row4"></div>		
