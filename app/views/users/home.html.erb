@@ -1,6 +1,6 @@
 <script>
 $(document).ready(function(){
-	$('#home').css('display','none');
+	$('#content').css('display','none');
 	$('#gif2').css('display','none');
 	$('#gif3').css('display','none');
 	$('#gif4').css('display','none');
@@ -13,7 +13,7 @@ function loadGif(n) {
 }
 function loadContent(n) {
 	$('#gif'+n).css('display', 'none');
-	$('#home').css('display', 'block');
+	$('#content').css('display', 'block');
 }
 </script>
 <div id="gif1" onclick = "loadGif(2);"></div>
