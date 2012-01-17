@@ -27,7 +27,7 @@ $(document).ready(function(){
 });
 
 function checkAll(){
-	if($('#number_gender option:selected').val() && $('#number_temperment option:selected').val() && $('#number_age option:selected').val() && $('#number_color option:selected').val() && $('#verb option:selected').val()) {
+	if($('#number_gender option:selected').val() && $('#number_temperment option:selected').val() && $('#number_age option:selected').val() && $('#number_color').val() && $('#verb option:selected').val()) {
 		return true;
 	}
 	else {
@@ -41,6 +41,9 @@ function loadAttribute() {
 			if($('#verb option:selected').val()){
 				showAttribute(arr[i], $("#"+arr[i]).val());
 			}
+		}
+		else if(arr[i] == "number_color") {
+			showAttribute(arr[i], '<%= @number.color %> ');
 		}
 		else {
 			showAttribute(arr[i], $("#"+arr[i]+' option:selected').val());
@@ -66,6 +69,8 @@ function showAttribute(id, type) {
 	}
 	if(id == "number_color") {
 		$('#'+mapping_div[new_div_num]).css({'background-color': type});
+		$('#number_color').val(type);
+		toggleSubmit();
 	}
 	else if(id == "number_equation") {
 		var str = mapping_numbers["<%= @number.number %>"];
@@ -135,7 +140,15 @@ function toggleSubmit(){
   </div>
   <div id="number_color_div">
     <%= f.label :color, :class => "attribute_headings"%><br />
-	<%= f.select :color, options_for_select(colors, :selected => @number.color), {}, :onchange => "showAttribute(this.id, this.value);", :onblur => "toggleSubmit();" %>
+	<!-- <%= f.select :color, options_for_select(colors, :selected => @number.color), {}, :onchange => "showAttribute(this.id, this.value);", :onblur => "toggleSubmit();", :style => "display:none" %> -->
+	<div id="color_red" onclick="showAttribute('number_color', '#FF0000');" ></div>
+	<div id="color_orange" onclick="showAttribute('number_color', '#FF6600');"></div>
+	<div id="color_yellow" onclick="showAttribute('number_color', '#FFFF00');" ></div>
+	<div id="color_green" onclick="showAttribute('number_color', '#33FF33');" ></div>
+	<div id="color_blue" onclick="showAttribute('number_color', '#0000FF');" ></div>
+	<div id="color_purple" onclick="showAttribute('number_color', '#9900FF');" ></div>
+	<div id="color_pink" onclick="showAttribute('number_color', '#FF06F5');" ></div>
+	<%= hidden_field_tag('number[color]')%>
   </div>
   <div id="number_equation_div">
 	<span class="attribute_headings">Equation</span>

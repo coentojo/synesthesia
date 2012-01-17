@@ -11,7 +11,7 @@
 	</div>
 	<div id="show_r1c23" class="row1">
 		<span class="attr_story">
-			<%= num_words[@n]%> is a <%= @attributes[1].html_safe %> year old <%= gender_words[@attributes[2]] %> <%= num_personas[@attributes[0]]%>
+			<%= num_words[@n]%> <span style="color: <%=@attributes[3]%>">is a</span> <%= @attributes[1].html_safe %> <span style="color: <%=@attributes[3]%>">year old</span> <%= gender_words[@attributes[2]] %> <span style="color: <%=@attributes[3]%>"><%= num_personas[@attributes[0]]%></span>
 		</span>
 	</div>
 	<div id="show_r1c4" class="row1">
@@ -24,15 +24,14 @@
 	<div id="show_r1c6" class="row1"></div>
 	
 	<div id="show_r234c123">
-		<span class="show_attr_type"><u>PATTERN STREAM:</u></span><br/>
+		<div id="show_attr_type_pattern"><u>PATTERN STREAM:</u></div>
 		<span style="color: <%=@attributes[3]%>"><% str = @attributes[0].html_safe+@attributes[1].html_safe+@attributes[2].html_safe%>
 		<%= str*90%></span>
 	</div>
 	<div id="show_r234c45">
-		<span class="show_attr_type"><u>EQUATION WORDSTREAM</u></span><br/>
+		<div id="show_attr_type_wordstream"><u>EQUATION WORDSTREAM:</u></div>
 		<% @equations.each do |e| %>	
 			<%= num_words[e.num1] %> <%= e.verb %> <%= num_words[e.num2] %><br/>
 		<% end %>
-		
 	</div>
 </div>

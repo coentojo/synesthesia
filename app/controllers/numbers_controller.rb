@@ -46,12 +46,11 @@ class NumbersController < ApplicationController
     @numberlikes.save
     
     @number = Number.new(params[:number])
+    
     if session[:user_id]
       @number.user_id = session[:user_id]
     end
     respond_to do |format|
-      puts "USERID"
-      puts @number.user_id
       if @number.save
         format.html { redirect_to(users_community_path, :notice => 'Number was successfully created.') }
       else
@@ -61,6 +60,8 @@ class NumbersController < ApplicationController
   end
   
   def update
+    puts "ATTR"
+    puts params[:number]
     @number = Number.find(params[:id])
     @numberlikes = Numberlike.where(:user_id => session[:user_id]).find_by_num1(@number.number)
     @numberlikes.verb = params[:verb]
@@ -154,6 +155,8 @@ class NumbersController < ApplicationController
         @genders << @data[k]
       end
     end
+    puts "GENDER"
+    puts @genders
     render :json => @genders
   end  
 
@@ -340,9 +343,24 @@ class NumbersController < ApplicationController
   end
   
   def filteroccupation
-    occ = params["occ"]
+    state = params["us"]
+    fil = params["fil"]
+    if params["us"] == "yes"
+      whereby = "state"
+    else 
+      if fil.length > 2
+        whereby = "occupation"
+      else
+        whereby = "country"
+      end
+    end
+    puts "WHERE"
+    puts whereby
+    puts "PARAM"
+    puts fil
+
     @numbers = {}
-    n = Number.all(:include => :user, :conditions => {:users => {:occupation => occ}}).group_by(&:number)
+    n = Number.all(:include => :user, :conditions => {:users => {whereby => fil}}).group_by(&:number)
     n.each do |k,v|
       if n[k].length > 1
         temp = {}
@@ -351,42 +369,53 @@ class NumbersController < ApplicationController
         age = 0
         n[k].each do |p|
           age += p.age
+          puts "age"
+          puts age
           temp[p.temperment] ||= []
           temp[p.temperment] << p.temperment
+          puts "temp"
+          puts temp
           color[p.color] ||= []
           color[p.color] << p.color
+          puts "color"
+          puts color
           gender[p.gender] ||= []
           gender[p.gender] << p.gender
+          puts "gender"
+          puts gender
         end
         #find age avg
         @age = age/n[k].length
         #find temperment max
         max = 0
-        temp.each do |k,v|
-          if temp[k].length > max
-            max = temp[k].length
-            @temperment = k
+        temp.each do |k1,v|
+          if temp[k1].length > max
+            max = temp[k1].length
+            @temperment = k1
           end
         end
         #find color max
         max = 0
-        color.each do |k,v|
-          if color[k].length > max
-            max = color[k].length
-            @color = k
+        color.each do |k2,v|
+          if color[k2].length > max
+            max = color[k2].length
+            @color = k2
           end
         end
         #find gender max
         max = 0
-        gender.each do |k,v|
-          if gender[k].length > max
-            max = gender[k].length
-            @gender = k
+        gender.each do |k3,v|
+          if gender[k3].length > max
+            max = gender[k3].length
+            @gender = k3
           end
         end
         str = @age.to_s + "," + @temperment + "," + @color + "," + @gender
         @numbers[k] ||= []
         @numbers[k] << str
+        puts "CALCS"
+        puts k
+        puts @numbers
       else
         @age = n[k][0].age
         @temperment = n[k][0].temperment
@@ -397,8 +426,11 @@ class NumbersController < ApplicationController
         @numbers[k] << str
       end
     end
-    @numbers.sort
-    
+    #FIX THIS LINE might want to pad the number array 
+    @numbers2 = @numbers.sort
+    puts "DUMPPPP23hoi3h"
+    puts @numbers2
+    render :json => @numbers2
   end
 
 end

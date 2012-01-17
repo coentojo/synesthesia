@@ -27,10 +27,10 @@
 		<span style="color:#FF65F5">ABOUT US</span>
 	</div>
 	<div id="about_r2c45" class="row2">
-		 <span style="text-transform:uppercase">Countless is a project which challenges how we perceive and interact with numbers. It aims to emulate the synesthetic experience by creating a digital community of "living" numbers.<br/><br/>
+		 <span class="about_text">Countless is a project which challenges how we perceive and interact with numbers. It aims to emulate the synesthetic experience by creating a digital community of "living" numbers.<br/><br/>
 				<a href="http://www.christinanizar.com">Christina Nizar</a> and <a href="http://www.raisapark.com">Ji Yong ‘Raisa’ Park</a> met at Art Center College of Design where they both studied graphic design. There, they challenged each other in the areas of both academic and visual communication. Given that they are process and research driven designers who enjoy fiddling with complicated ideas, they probed into the layers of abstract and unresolved principles of Synesthesia. “Countless,” by which the project is called, allowed itself to be fostered by the designers’ contrasting idiosyncrasies: Raisa’s personality synesthesia and Christina’s dyslexia which have influenced both in their interaction with numbers. Countless is an effort to challenge the audience to rethink the meaning of symbols such as numbers and to re-codify the meaning in order to engage in the synesthetic experience.</span>
 	</div>
-	<div id="home_r2c6" class="row2">
+	<div id="about_r2c6" class="row2">
 		<ul id="tabs">
 			<% if current_user %>
 				<%= link_to "Sign out", signout_path %>
@@ -41,7 +41,7 @@
 				<li style="text-decoration: line-through; color: #000000">Archive</li>
 			<% end %>
 			<li style="text-decoration: underline"><%= link_to "About", users_about_path %></li><br/><br/>
-			<li style="text-decoration: underline"><%= current_user.name if current_user %></li><br/>
+			<li style="text-decoration: underline"><%= current_user.name if current_user %></li>
 			<div class="fb-like" id="fblike" data-href="http://www.countless.info" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 		</ul>
 	</div>
@@ -70,7 +70,7 @@
 		<br/><br/><br/><br/><span style="color:#FF65F5">CONTRIBUTORS</span>
 	</div>		
 	<div id="about_r4c45" class="row4">
-		<br/><br/><br/><br/><span style="text-transform:uppercase"><a href="http://www.chrisoentojo.com">Chris Oentojo</a> is a graduate student at Carnegie Mellon University focusing on Entrepreneurship. He strives to find the harmony between Engineering and Design. <br/><br/>Special thanks to: Steve Kim and Nik Hafermaas</span>
+		<br/><br/><br/><br/><span class="about_text"><a href="http://www.chrisoentojo.com">Chris Oentojo</a> is a graduate student at Carnegie Mellon University focusing on Entrepreneurship. He strives to find the harmony between Engineering and Design. <br/><br/>Special thanks to: Steve Kim and Nik Hafermaas</span>
 	</div>	
 	<div id="r4c6" class="row4">
 		<span class="copyright">&#169;</span><span class="trademark">&#174;</span>
